@@ -122,10 +122,45 @@
 <h2 id="创建Hexo项目"><a href="#创建Hexo项目" class="headerlink" title="创建Hexo项目"></a>创建Hexo项目</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init project_name</span><br></pre></td></tr></table></figure>
 
 <p>通过 <code>hexo init</code> 命令创建项目，其中 <code>project_name</code> 替换成你需要创建的项目名称。</p>
-<h2 id="本地运行Hexo项目"><a href="#本地运行Hexo项目" class="headerlink" title="本地运行Hexo项目"></a>本地运行Hexo项目</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g | hexo server</span><br></pre></td></tr></table></figure>
+<h2 id="本地运行Hexo项目"><a href="#本地运行Hexo项目" class="headerlink" title="本地运行Hexo项目"></a>本地运行Hexo项目</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g &amp; hexo server</span><br></pre></td></tr></table></figure>
 
 <p>打开终端，进入项目目录下，运行以上命令后即可启动项目，在浏览器中输入 <code>http://localhost:4000</code> 即可访问博客页面。</p>
-<h1 id="Github部署Hexo"><a href="#Github部署Hexo" class="headerlink" title="Github部署Hexo"></a>Github部署Hexo</h1>
+<h1 id="Github部署Hexo"><a href="#Github部署Hexo" class="headerlink" title="Github部署Hexo"></a>Github部署Hexo</h1><h2 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h2><p>在 <code>Github</code> 上创建新的仓库，仓库名称（Repository name）为 <code>yourname.github.io</code> ，如：<code>laohei7.github.io</code>。其中，<code>yourname</code> 为你的 <code>github</code> 名称。</p>
+<img src="/images/image-20231007215042144.png" alt="image-20231007215042144" style="zoom: 50%;" />
+
+
+
+<h2 id="Hexo关联Github"><a href="#Hexo关联Github" class="headerlink" title="Hexo关联Github"></a>Hexo关联Github</h2><ul>
+<li>复制你的仓库地址</li>
+</ul>
+<img src="/images/image-20231007215526443.png" alt="image-20231007215526443" style="zoom:50%;" />
+
+<ul>
+<li>生成你的 <code>github token</code>，位置如下。生成后记住创建的 <code>token</code>（复制到临时文档）。</li>
+</ul>
+<blockquote>
+<p>Settings（点击右上角头像）——&gt; Developer Settings</p>
+</blockquote>
+<p><img src="/images/image-20231007220154001.png" alt="image-20231007220154001"></p>
+<ul>
+<li>进入你创建的 <code>Hexo</code> 项目根目录，找到 <code>_config.yml</code> 文件打开，找到 <code>deploy</code> 处添加以下内容。</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: 你的仓库地址</span><br><span class="line">  token: 你的token</span><br><span class="line">  branch: 分支（填master即可）</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安装Git部署插件（在你的项目更目录打开终端执行该命令）</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>提交内容</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g &amp; hexo d</span><br></pre></td></tr></table></figure>
+
+
+
+<p>通过以上过程即可完成博客的搭建，通过你的<code>github</code> 仓库名即可在浏览器访问你的博客，如：<a target="_blank" rel="noopener" href="https://laohei7.github.io/">laohei7.github.io</a></p>
+
       
     </div>
     <footer class="article-footer">
