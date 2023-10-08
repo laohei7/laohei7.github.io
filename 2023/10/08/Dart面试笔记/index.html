@@ -11,20 +11,22 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Lao Hei","sameAs":["https://github.com/laohei7","mailto"],"image":"rem-2.jpg"},"articleBody":"var、dynamic、Object\nvar：定义的类型不可变，变量的类型在初始化时根据值的类型进行推断，并且在编译时进行类型检查。\ndynamic：定义的类型可变，变量的类型在运行时可以更改，但在编译时不进行类型检查，因此需要小心使用以避免类型错误。\nObject：它可以引用任何Dart对象，但在不进行类型转换的情况下不能访问对象的成员。\n\n123456789var name = &quot;John&quot;;// name = 40; 赋值其他类型报错dynamic value = 42;value = &quot;Hello&quot;; // 允许赋值其他类型value.indexOf(&quot;e&quot;); // 编译不报错，运行时如果不是String类型将会报错Object obj = &quot;This is a string&quot;;obj.indexOf(&quot;a&quot;); // 编译时报错，调用方法前需要强转为对应的类型\n\n\n\nconst、final\nconst：\n\n必须初始化，只能赋值一次（编译时期赋值）；\nconst关键字即可修饰变量也可用来修饰常量构造函数；\n当const修饰类的构造函数时，它要求该类的所有成员都必须是final的；\nconst修饰的List集合任意索引不可修改；\nconst不可以修饰实例变量，访问类中const修饰的变量需要static修饰。\n\nfinal：\n\n必须初始化，只能赋值一次（运行时期赋值）；\nfinal可修饰实例变量；\nfinal修饰的List集合任意索引可修改；\nfinal 只可用来修饰变量。\n\n\n12345678910111213141516const number = 10;final number2 = 20;class Point&#123;\tfinal int x;\tfinal int y;\tstatic const version = 1.0;\tconst Point(this.x,this.y);&#125;final names = [&quot;Tom&quot;,&quot;Aimer&quot;,&quot;Rem&quot;];names.add(&quot;Fake&quot;); // 允许增删改const names2 = [&quot;Tom&quot;,&quot;Aimer&quot;,&quot;Rem&quot;];// names2.add(&quot;Fake&quot;); 不允许\n\n\n\n??、??&#x3D;\n?? ——&gt; 左边如果为空返回右边的值，否则不处理。\n??= ——&gt; 左边如果为空把B的值赋值给A。\n\n1234567String? str;str ?? printNullInfo();str ??= &quot;Hello World&quot;;void printNullInfo()&#123;\tprint(&quot;value is null&quot;);&#125;\n\n\n\n作用域（权限）\nDart默认为public，以下划线开头的变量、类、函数为private。\n\nget、set\n使用 get 和 set 方法来实现属性的读取和设置。这可以帮助你控制属性的访问，例如对属性的读取和写入进行自定义操作或添加验证逻辑。\n\n1234567891011121314151617181920212223242526272829303132class Person &#123;  String _name = &#x27;&#x27;; // 私有属性  // 使用 get 方法获取属性值  String get name &#123;    return _name;  &#125;  // 使用 set 方法设置属性值，并添加验证逻辑  set name(String value) &#123;    if (value.isNotEmpty) &#123;      _name = value;    &#125; else &#123;      print(&#x27;Name cannot be empty.&#x27;);    &#125;  &#125;&#125;void main() &#123;  var person = Person();  // 使用 get 方法读取属性值  print(person.name); // 输出: &#x27;&#x27;  // 使用 set 方法设置属性值  person.name = &#x27;John&#x27;; // 设置成功  print(person.name); // 输出: &#x27;John&#x27;  // 使用 set 方法设置空值，触发验证逻辑  person.name = &#x27;&#x27;; // 输出: &#x27;Name cannot be empty.&#x27;  print(person.name); // 输出: &#x27;John&#x27;，属性值未改变&#125;\n\n\n\n..（级联操作符）、.（调用操作符）\n.：返回的是该方法返回的值或者属性值。\n..：返回的相当于是this，当前的对象引用。\n\n123456VideoPlayerController videoPlayerController;videoPlayerController =          VideoPlayerController    \t\t.networkUrl(Uri.parse(url))    \t\t..initialize(); // 返回VideoPlayerController// await videoPlayerController.initialize(); // 返回 Future&lt;void&gt;\n\n","dateCreated":"2023-10-08T17:32:16+08:00","dateModified":"2023-10-08T18:26:01+08:00","datePublished":"2023-10-08T17:32:16+08:00","description":"var、dynamic、Object\nvar：定义的类型不可变，变量的类型在初始化时根据值的类型进行推断，并且在编译时进行类型检查。\ndynamic：定义的类型可变，变量的类型在运行时可以更改，但在编译时不进行类型检查，因此需要小心使用以避免类型错误。\nObject：它可以引用任何Dart对象，但在不进行类型转换的情况下不能访问对象的成员。\n\n123456789var name = &quot;John&quot;;// name = 40; 赋值其他类型报错dynamic value = 42;value = &quot;Hello&quot;; // 允许赋值其他类型value.indexOf(&quot;e&quot;); // 编译不报错，运行时如果不是String类型将会报错Object obj = &quot;This is a string&quot;;obj.indexOf(&quot;a&quot;); // 编译时报错，调用方法前需要强转为对应的类型","headline":"Dart面试笔记","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://lahei7.github.io/2023/10/08/Dart%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/"},"publisher":{"@type":"Organization","name":"Lao Hei","sameAs":["https://github.com/laohei7","mailto"],"image":"rem-2.jpg","logo":{"@type":"ImageObject","url":"rem-2.jpg"}},"url":"https://lahei7.github.io/2023/10/08/Dart%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/","keywords":"Dart, Flutter"}</script>
-    <meta name="description" content="var、dynamic、Object var：定义的类型不可变，变量的类型在初始化时根据值的类型进行推断，并且在编译时进行类型检查。 dynamic：定义的类型可变，变量的类型在运行时可以更改，但在编译时不进行类型检查，因此需要小心使用以避免类型错误。 Object：它可以引用任何Dart对象，但在不进行类型转换的情况下不能访问对象的成员。  123456789var name &#x3D; &quot;J">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Lao Hei","sameAs":["https://github.com/laohei7","mailto"],"image":"rem-2.jpg"},"articleBody":"\n\nvar、dynamic、Object\nvar：定义的类型不可变，变量的类型在初始化时根据值的类型进行推断，并且在编译时进行类型检查。\ndynamic：定义的类型可变，变量的类型在运行时可以更改，但在编译时不进行类型检查，因此需要小心使用以避免类型错误。\nObject：它可以引用任何Dart对象，但在不进行类型转换的情况下不能访问对象的成员。\n\n123456789var name = &quot;John&quot;;// name = 40; 赋值其他类型报错dynamic value = 42;value = &quot;Hello&quot;; // 允许赋值其他类型value.indexOf(&quot;e&quot;); // 编译不报错，运行时如果不是String类型将会报错Object obj = &quot;This is a string&quot;;obj.indexOf(&quot;a&quot;); // 编译时报错，调用方法前需要强转为对应的类型\n\n\n\nconst、final\nconst：\n\n必须初始化，只能赋值一次（编译时期赋值）；\nconst关键字即可修饰变量也可用来修饰常量构造函数；\n当const修饰类的构造函数时，它要求该类的所有成员都必须是final的；\nconst修饰的List集合任意索引不可修改；\nconst不可以修饰实例变量，访问类中const修饰的变量需要static修饰。\n\nfinal：\n\n必须初始化，只能赋值一次（运行时期赋值）；\nfinal可修饰实例变量；\nfinal修饰的List集合任意索引可修改；\nfinal 只可用来修饰变量。\n\n\n12345678910111213141516const number = 10;final number2 = 20;class Point&#123;\tfinal int x;\tfinal int y;\tstatic const version = 1.0;\tconst Point(this.x,this.y);&#125;final names = [&quot;Tom&quot;,&quot;Aimer&quot;,&quot;Rem&quot;];names.add(&quot;Fake&quot;); // 允许增删改const names2 = [&quot;Tom&quot;,&quot;Aimer&quot;,&quot;Rem&quot;];// names2.add(&quot;Fake&quot;); 不允许\n\n\n\n??、??&#x3D;\n?? ——&gt; 左边如果为空返回右边的值，否则不处理。\n??= ——&gt; 左边如果为空把B的值赋值给A。\n\n1234567String? str;str ?? printNullInfo();str ??= &quot;Hello World&quot;;void printNullInfo()&#123;\tprint(&quot;value is null&quot;);&#125;\n\n\n\n作用域（权限）\nDart默认为public，以下划线开头的变量、类、函数为private。\n\nget、set\n使用 get 和 set 方法来实现属性的读取和设置。这可以帮助你控制属性的访问，例如对属性的读取和写入进行自定义操作或添加验证逻辑。\n\n1234567891011121314151617181920212223242526272829303132class Person &#123;  String _name = &#x27;&#x27;; // 私有属性  // 使用 get 方法获取属性值  String get name &#123;    return _name;  &#125;  // 使用 set 方法设置属性值，并添加验证逻辑  set name(String value) &#123;    if (value.isNotEmpty) &#123;      _name = value;    &#125; else &#123;      print(&#x27;Name cannot be empty.&#x27;);    &#125;  &#125;&#125;void main() &#123;  var person = Person();  // 使用 get 方法读取属性值  print(person.name); // 输出: &#x27;&#x27;  // 使用 set 方法设置属性值  person.name = &#x27;John&#x27;; // 设置成功  print(person.name); // 输出: &#x27;John&#x27;  // 使用 set 方法设置空值，触发验证逻辑  person.name = &#x27;&#x27;; // 输出: &#x27;Name cannot be empty.&#x27;  print(person.name); // 输出: &#x27;John&#x27;，属性值未改变&#125;\n\n\n\n..（级联操作符）、.（调用操作符）\n.：返回的是该方法返回的值或者属性值。\n..：返回的相当于是this，当前的对象引用。\n\n123456VideoPlayerController videoPlayerController;videoPlayerController =          VideoPlayerController    \t\t.networkUrl(Uri.parse(url))    \t\t..initialize(); // 返回VideoPlayerController// await videoPlayerController.initialize(); // 返回 Future&lt;void&gt;\n\n\n\n空安全\n使用?修饰类型，即可声明变量为可空类型。?.和!空安全操作符。?.在变量为空情况下不会执行调用的方法，但不阻塞后面逻辑运行；!在变量为空时抛出异常。\n\n123String? str;var subStr = str?.substring(0,2);subStr = str!.substring(0,2);\n\n\n\nasync、awaitFuture、StreamIsolate线程模型\nDart为单线程模型。\n\n\nMain &gt; MicroTask &gt; EventQueue\n先开启app执行入口函数main()，执行完成之后，消息机制启动，先是会按照先进先出的顺序逐个执行微任务队列中的任务microtask，事件任务eventtask执行完毕后便会退出，但是，在事件任务执行的过程中也可以插入新的微任务和事件任务，在这种情况下，整个线程的执行过程便是一直在循环，不会退出，而Flutter中，主线程的执行过程正是如此，永不终止。\n在事件循环中，当某个任务发生异常并没有被捕获时，程序并不会退出，而直接导致的结果是当前任务的后续代码就不会被执行了，也就是说一个任务中的异常是不会影响其它任务执行的。\n\n插入微任务\n\n12345// 方式一scheduleMicrotask(callback);// 方式二Future.microtask(callback);\n\n\n插入事件\n\n1234567// 方式一Future(() async &#123;&#125;);// 方式二: async和await关键字void eventTest() async&#123;\tawait Future(() async &#123;&#125;);&#125;\n\n","dateCreated":"2023-10-08T17:32:16+08:00","dateModified":"2023-10-08T19:08:52+08:00","datePublished":"2023-10-08T17:32:16+08:00","description":"\n\nvar、dynamic、Object\nvar：定义的类型不可变，变量的类型在初始化时根据值的类型进行推断，并且在编译时进行类型检查。\ndynamic：定义的类型可变，变量的类型在运行时可以更改，但在编译时不进行类型检查，因此需要小心使用以避免类型错误。\nObject：它可以引用任何Dart对象，但在不进行类型转换的情况下不能访问对象的成员。\n\n123456789var name = &quot;John&quot;;// name = 40; 赋值其他类型报错dynamic value = 42;value = &quot;Hello&quot;; // 允许赋值其他类型value.indexOf(&quot;e&quot;); // 编译不报错，运行时如果不是String类型将会报错Object obj = &quot;This is a string&quot;;obj.indexOf(&quot;a&quot;); // 编译时报错，调用方法前需要强转为对应的类型","headline":"Dart面试笔记","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://lahei7.github.io/2023/10/08/Dart%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/"},"publisher":{"@type":"Organization","name":"Lao Hei","sameAs":["https://github.com/laohei7","mailto"],"image":"rem-2.jpg","logo":{"@type":"ImageObject","url":"rem-2.jpg"}},"url":"https://lahei7.github.io/2023/10/08/Dart%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/","keywords":"Dart, Flutter"}</script>
+    <meta name="description" content="var、dynamic、Object var：定义的类型不可变，变量的类型在初始化时根据值的类型进行推断，并且在编译时进行类型检查。 dynamic：定义的类型可变，变量的类型在运行时可以更改，但在编译时不进行类型检查，因此需要小心使用以避免类型错误。 Object：它可以引用任何Dart对象，但在不进行类型转换的情况下不能访问对象的成员。  123456789var name &#x3D; &amp;quot">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Dart面试笔记">
 <meta property="og:url" content="https://lahei7.github.io/2023/10/08/Dart%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Lao Hei Blog">
-<meta property="og:description" content="var、dynamic、Object var：定义的类型不可变，变量的类型在初始化时根据值的类型进行推断，并且在编译时进行类型检查。 dynamic：定义的类型可变，变量的类型在运行时可以更改，但在编译时不进行类型检查，因此需要小心使用以避免类型错误。 Object：它可以引用任何Dart对象，但在不进行类型转换的情况下不能访问对象的成员。  123456789var name &#x3D; &quot;J">
+<meta property="og:description" content="var、dynamic、Object var：定义的类型不可变，变量的类型在初始化时根据值的类型进行推断，并且在编译时进行类型检查。 dynamic：定义的类型可变，变量的类型在运行时可以更改，但在编译时不进行类型检查，因此需要小心使用以避免类型错误。 Object：它可以引用任何Dart对象，但在不进行类型转换的情况下不能访问对象的成员。  123456789var name &#x3D; &amp;quot">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lahei7.github.io/images/831566-20201213134139737-1310749493.png">
 <meta property="article:published_time" content="2023-10-08T09:32:16.000Z">
-<meta property="article:modified_time" content="2023-10-08T10:26:01.413Z">
+<meta property="article:modified_time" content="2023-10-08T11:08:52.069Z">
 <meta property="article:author" content="Lao Hei">
 <meta property="article:tag" content="Dart">
 <meta property="article:tag" content="Flutter">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lahei7.github.io/images/831566-20201213134139737-1310749493.png">
     
     
         
@@ -273,7 +275,9 @@
     
     <div class="post-content markdown">
         <div class="main-content-wrap">
-            <h2 id="var、dynamic、Object"><a href="#var、dynamic、Object" class="headerlink" title="var、dynamic、Object"></a>var、dynamic、Object</h2><blockquote>
+            <h1 id="table-of-contents">目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">var、dynamic、Object</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">const、final</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">??、??&#x3D;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">作用域（权限）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">get、set</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">..（级联操作符）、.（调用操作符）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">空安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">async、await</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">Future、Stream</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">Isolate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">线程模型</span></a></li></ol>
+
+<h2><span id="var-dynamic-object">var、dynamic、Object</span></h2><blockquote>
 <p><code>var</code>：定义的类型不可变，变量的类型在初始化时根据值的类型进行推断，并且在编译时进行类型检查。</p>
 <p><code>dynamic</code>：定义的类型可变，变量的类型在运行时可以更改，但在编译时不进行类型检查，因此需要小心使用以避免类型错误。</p>
 <p><code>Object</code>：它可以引用任何<code>Dart</code>对象，但在不进行类型转换的情况下不能访问对象的成员。</p>
@@ -282,7 +286,7 @@
 
 <span id="more"></span>
 
-<h2 id="const、final"><a href="#const、final" class="headerlink" title="const、final"></a>const、final</h2><blockquote>
+<h2><span id="const-final">const、final</span></h2><blockquote>
 <p><code>const</code>：</p>
 <ul>
 <li>必须初始化，只能赋值一次（编译时期赋值）；</li>
@@ -303,7 +307,7 @@
 
 
 
-<h2 id="、"><a href="#、" class="headerlink" title="??、??&#x3D;"></a>??、??&#x3D;</h2><blockquote>
+<h2><span id="x3d">??、??&#x3D;</span></h2><blockquote>
 <p><code>??</code> ——&gt; 左边如果为空返回右边的值，否则不处理。</p>
 <p><code>??=</code> ——&gt; 左边如果为空把B的值赋值给A。</p>
 </blockquote>
@@ -311,21 +315,47 @@
 
 
 
-<h2 id="作用域（权限）"><a href="#作用域（权限）" class="headerlink" title="作用域（权限）"></a>作用域（权限）</h2><blockquote>
+<h2><span id="作用域权限">作用域（权限）</span></h2><blockquote>
 <p><code>Dart</code>默认为<code>public</code>，以下划线开头的变量、类、函数为<code>private</code>。</p>
 </blockquote>
-<h2 id="get、set"><a href="#get、set" class="headerlink" title="get、set"></a>get、set</h2><blockquote>
+<h2><span id="get-set">get、set</span></h2><blockquote>
 <p>使用 <code>get</code> 和 <code>set</code> 方法来实现属性的读取和设置。这可以帮助你控制属性的访问，例如对属性的读取和写入进行自定义操作或添加验证逻辑。</p>
 </blockquote>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="built_in">String</span> _name = <span class="string">&#x27;&#x27;</span>; <span class="comment">// 私有属性</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 使用 get 方法获取属性值</span></span><br><span class="line">  <span class="built_in">String</span> <span class="keyword">get</span> name &#123;</span><br><span class="line">    <span class="keyword">return</span> _name;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 使用 set 方法设置属性值，并添加验证逻辑</span></span><br><span class="line">  <span class="keyword">set</span> name(<span class="built_in">String</span> value) &#123;</span><br><span class="line">    <span class="keyword">if</span> (value.isNotEmpty) &#123;</span><br><span class="line">      _name = value;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">print</span>(<span class="string">&#x27;Name cannot be empty.&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  <span class="keyword">var</span> person = Person();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 使用 get 方法读取属性值</span></span><br><span class="line">  <span class="built_in">print</span>(person.name); <span class="comment">// 输出: &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 使用 set 方法设置属性值</span></span><br><span class="line">  person.name = <span class="string">&#x27;John&#x27;</span>; <span class="comment">// 设置成功</span></span><br><span class="line">  <span class="built_in">print</span>(person.name); <span class="comment">// 输出: &#x27;John&#x27;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 使用 set 方法设置空值，触发验证逻辑</span></span><br><span class="line">  person.name = <span class="string">&#x27;&#x27;</span>; <span class="comment">// 输出: &#x27;Name cannot be empty.&#x27;</span></span><br><span class="line">  <span class="built_in">print</span>(person.name); <span class="comment">// 输出: &#x27;John&#x27;，属性值未改变</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="（级联操作符）、-（调用操作符）"><a href="#（级联操作符）、-（调用操作符）" class="headerlink" title="..（级联操作符）、.（调用操作符）"></a>..（级联操作符）、.（调用操作符）</h2><blockquote>
+<h2><span id="级联操作符-调用操作符">..（级联操作符）、.（调用操作符）</span></h2><blockquote>
 <p><code>.</code>：返回的是该方法返回的值或者属性值。</p>
 <p><code>..</code>：返回的相当于是<code>this</code>，当前的对象引用。</p>
 </blockquote>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">VideoPlayerController videoPlayerController;</span><br><span class="line">videoPlayerController =</span><br><span class="line">          VideoPlayerController</span><br><span class="line">    		.networkUrl(<span class="built_in">Uri</span>.parse(url))</span><br><span class="line">    		..initialize(); <span class="comment">// 返回VideoPlayerController</span></span><br><span class="line"><span class="comment">// await videoPlayerController.initialize(); // 返回 Future&lt;void&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2><span id="空安全">空安全</span></h2><blockquote>
+<p>使用<code>?</code>修饰类型，即可声明变量为可空类型。<code>?.</code>和<code>!</code>空安全操作符。<code>?.</code>在变量为空情况下不会执行调用的方法，但不阻塞后面逻辑运行；<code>!</code>在变量为空时抛出异常。</p>
+</blockquote>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String?</span> str;</span><br><span class="line"><span class="keyword">var</span> subStr = str?.substring(<span class="number">0</span>,<span class="number">2</span>);</span><br><span class="line">subStr = str!.substring(<span class="number">0</span>,<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2><span id="async-await">async、await</span></h2><h2><span id="future-stream">Future、Stream</span></h2><h2><span id="isolate">Isolate</span></h2><h2><span id="线程模型">线程模型</span></h2><blockquote>
+<p><code>Dart</code>为单线程模型。</p>
+</blockquote>
+<p><img src="/images/831566-20201213134139737-1310749493.png"></p>
+<p><code>Main</code> &gt; <code>MicroTask</code> &gt; <code>EventQueue</code></p>
+<p>先开启<code>app</code>执行入口函数<code>main()</code>，执行完成之后，消息机制启动，先是会按照先进先出的顺序逐个执行微任务队列中的任务<code>microtask</code>，事件任务<code>eventtask</code>执行完毕后便会退出，但是，在事件任务执行的过程中也可以插入新的微任务和事件任务，在这种情况下，整个线程的执行过程便是一直在循环，不会退出，而<code>Flutter</code>中，主线程的执行过程正是如此，永不终止。</p>
+<p>在事件循环中，当某个任务发生异常并没有被捕获时，程序并不会退出，而直接导致的结果是<strong>当前任务</strong>的后续代码就不会被执行了，也就是说一个任务中的异常是不会影响其它任务执行的。</p>
+<blockquote>
+<p>插入微任务</p>
+</blockquote>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方式一</span></span><br><span class="line">scheduleMicrotask(callback);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方式二</span></span><br><span class="line">Future.microtask(callback);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>插入事件</p>
+</blockquote>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方式一</span></span><br><span class="line">Future(() <span class="keyword">async</span> &#123;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方式二: async和await关键字</span></span><br><span class="line"><span class="keyword">void</span> eventTest() <span class="keyword">async</span>&#123;</span><br><span class="line">	<span class="keyword">await</span> Future(() <span class="keyword">async</span> &#123;&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
             
@@ -389,7 +419,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
+                <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="目录">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -462,7 +492,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
+                <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="目录">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -545,7 +575,9 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"><h2 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h2><blockquote>
+                        <div class="media-content hide-xs font-merryweather"><!--toc-->
+
+<h2 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h2><blockquote>
 <p>Node JS</p>
 </blockquote>
 <ul>
@@ -581,10 +613,12 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"><h2 id="主题推荐"><a href="#主题推荐" class="headerlink" title="主题推荐"></a>主题推荐</h2><blockquote>
+                        <div class="media-content hide-xs font-merryweather"><!--toc-->
+
+<h2 id="主题推荐"><a href="#主题推荐" class="headerlink" title="主题推荐"></a>主题推荐</h2><blockquote>
 <p><a target="_blank" rel="noopener" href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak#tranquilpeak">Tranquilpeak</a></p>
 </blockquote>
-<p><img src="https://camo.githubusercontent.com/48abceabe917e8d1c853d8fc1046d5174d7f638ffc19f563e6c5da00d808163b/687474703a2f2f6431753962697761786a6e6777672e636c6f756466726f6e742e6e65742f73686f7763617365732f73686f77636173652d76322e6a7067"></p>
+<p><img src="/images/687474703a2f2f6431753962697761786a6e6777672e636c6f756466726f6e742e6e65742f73686f7763617365732f73686f77636173652d76322e6a7067.png"></p>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://github.com/Ailln/awesome-hexo-theme">awesome-hexo-theme(十个精致Hexo主题)</a></p>
 </blockquote></div>
@@ -610,7 +644,9 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"><h2 id="var、dynamic、Object"><a href="#var、dynamic、Object" class="headerlink" title="var、dynamic、Object"></a>var、dynamic、Object</h2><blockquote>
+                        <div class="media-content hide-xs font-merryweather"><!--toc-->
+
+<h2 id="var、dynamic、Object"><a href="#var、dynamic、Object" class="headerlink" title="var、dynamic、Object"></a>var、dynamic、Object</h2><blockquote>
 <p><code>var</code>：定义的类型不可变，变量的类型在初始化时根据值的类型进行推断，并且在编译时进行类型检查。</p>
 <p><code>dynamic</code>：定义的类型可变，变量的类型在运行时可以更改，但在编译时不进行类型检查，因此需要小心使用以避免类型错误。</p>
 <p><code>Object</code>：它可以引用任何<code>Dart</code>对象，但在不进行类型转换的情况下不能访问对象的成员。</p>
