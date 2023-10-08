@@ -11,17 +11,17 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Lao Hei","sameAs":["https://github.com/laohei7","mailto"],"image":"rem-2.jpg"},"articleBody":"\n\n安装环境\nNode JS\n\n\nLinux(Ubuntu)\n\n1sudo apt install nodejs\n\n\nWindows\n\n前往官网下载安装包，下载地址，安装完成后记得设置 node 环境变量。\nNode JS 环境安装好后，通过以下命令可以验证是否安装成功\n1node -V\n\n\n\n\nHexo\n\nHexo 安装依赖 npm，故安装 Hexo 之前保证 Node JS 安装成功。\n1npm install -g hexo-cli\n\n注意：Linux 下如果安装失败，请使用管理员权限安装，如：sudo npm install -g hexo-cli。\n创建Hexo项目1hexo init project_name\n\n通过 hexo init 命令创建项目，其中 project_name 替换成你需要创建的项目名称。\n本地运行Hexo项目1hexo g &amp;&amp; hexo server\n\n打开终端，进入项目目录下，运行以上命令后即可启动项目，在浏览器中输入 http://localhost:4000 即可访问博客页面。\n创建仓库在 Github 上创建新的仓库，仓库名称（Repository name）为 yourname.github.io ，如：laohei7.github.io。其中，yourname 为你的 github 名称。\n\n\n\n\nHexo关联Github\n复制你的仓库地址\n\n\n\n\n生成你的 github token，位置如下。生成后记住创建的 token（复制到临时文档）。\n\n\nSettings（点击右上角头像）——&gt; Developer Settings\n\n\n\n进入你创建的 Hexo 项目根目录，找到 _config.yml 文件打开，找到 deploy 处添加以下内容。\n\n12345deploy:  type: git  repo: 你的仓库地址  token: 你的token  branch: 分支（填master即可）\n\n\n安装Git部署插件（在你的项目更目录打开终端执行该命令）\n\n1npm install hexo-deployer-git --save\n\n\n提交内容\n\n1hexo g &amp;&amp; hexo d\n\n\n\n通过以上过程即可完成博客的搭建，通过你的github 仓库名即可在浏览器访问你的博客，如：laohei7.github.io\n","dateCreated":"2023-10-07T21:30:39+08:00","dateModified":"2023-10-08T19:06:34+08:00","datePublished":"2023-10-07T21:30:39+08:00","description":"\n\n安装环境\nNode JS\n\n\nLinux(Ubuntu)\n\n1sudo apt install nodejs\n\n\nWindows\n\n前往官网下载安装包，下载地址，安装完成后记得设置 node 环境变量。\nNode JS 环境安装好后，通过以下命令可以验证是否安装成功\n1node -V","headline":"Hexo和Github搭建博客网站","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://lahei7.github.io/2023/10/07/Hexo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/"},"publisher":{"@type":"Organization","name":"Lao Hei","sameAs":["https://github.com/laohei7","mailto"],"image":"rem-2.jpg","logo":{"@type":"ImageObject","url":"rem-2.jpg"}},"url":"https://lahei7.github.io/2023/10/07/Hexo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/","keywords":"Hexo, Github, 博客, 网站"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Lao Hei","sameAs":["https://github.com/laohei7","mailto"],"image":"rem-2.jpg"},"articleBody":"\n\n安装环境\nNode JS\n\n\nLinux(Ubuntu)\n\n1sudo apt install nodejs\n\n\nWindows\n\n前往官网下载安装包，下载地址，安装完成后记得设置 node 环境变量。\nNode JS 环境安装好后，通过以下命令可以验证是否安装成功\n1node -V\n\n\n\n\nHexo\n\nHexo 安装依赖 npm，故安装 Hexo 之前保证 Node JS 安装成功。\n1npm install -g hexo-cli\n\n注意：Linux 下如果安装失败，请使用管理员权限安装，如：sudo npm install -g hexo-cli。\n创建Hexo项目1hexo init project_name\n\n通过 hexo init 命令创建项目，其中 project_name 替换成你需要创建的项目名称。\n本地运行Hexo项目1hexo g &amp;&amp; hexo server\n\n打开终端，进入项目目录下，运行以上命令后即可启动项目，在浏览器中输入 http://localhost:4000 即可访问博客页面。\n创建仓库在 Github 上创建新的仓库，仓库名称（Repository name）为 yourname.github.io ，如：laohei7.github.io。其中，yourname 为你的 github 名称。\n\n\n\n\nHexo关联Github\n复制你的仓库地址\n\n\n\n\n生成你的 github token，位置如下。生成后记住创建的 token（复制到临时文档）。\n\n\nSettings（点击右上角头像）——&gt; Developer Settings\n\n\n\n进入你创建的 Hexo 项目根目录，找到 _config.yml 文件打开，找到 deploy 处添加以下内容。\n\n12345deploy:  type: git  repo: 你的仓库地址  token: 你的token  branch: 分支（填master即可）\n\n\n安装Git部署插件（在你的项目更目录打开终端执行该命令）\n\n1npm install hexo-deployer-git --save\n\n\n提交内容\n\n1hexo g &amp;&amp; hexo d\n\n\n\n通过以上过程即可完成博客的搭建，通过你的github 仓库名即可在浏览器访问你的博客，如：laohei7.github.io\n","dateCreated":"2023-10-07T21:30:39+08:00","dateModified":"2023-10-08T19:06:34+08:00","datePublished":"2023-10-07T21:30:39+08:00","description":"\n\n安装环境\nNode JS\n\n\nLinux(Ubuntu)\n\n1sudo apt install nodejs\n\n\nWindows\n\n前往官网下载安装包，下载地址，安装完成后记得设置 node 环境变量。\nNode JS 环境安装好后，通过以下命令可以验证是否安装成功\n1node -V","headline":"Hexo和Github搭建博客网站","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://laohei7.github.io/2023/10/07/Hexo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/"},"publisher":{"@type":"Organization","name":"Lao Hei","sameAs":["https://github.com/laohei7","mailto"],"image":"rem-2.jpg","logo":{"@type":"ImageObject","url":"rem-2.jpg"}},"url":"https://laohei7.github.io/2023/10/07/Hexo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/","keywords":"Hexo, Github, 博客, 网站"}</script>
     <meta name="description" content="安装环境 Node JS   Linux(Ubuntu)  1sudo apt install nodejs   Windows  前往官网下载安装包，下载地址，安装完成后记得设置 node 环境变量。 Node JS 环境安装好后，通过以下命令可以验证是否安装成功 1node -V">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Hexo和Github搭建博客网站">
-<meta property="og:url" content="https://lahei7.github.io/2023/10/07/Hexo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/index.html">
+<meta property="og:url" content="https://laohei7.github.io/2023/10/07/Hexo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/index.html">
 <meta property="og:site_name" content="Lao Hei Blog">
 <meta property="og:description" content="安装环境 Node JS   Linux(Ubuntu)  1sudo apt install nodejs   Windows  前往官网下载安装包，下载地址，安装完成后记得设置 node 环境变量。 Node JS 环境安装好后，通过以下命令可以验证是否安装成功 1node -V">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://lahei7.github.io/images/image-20231007215042144.png">
-<meta property="og:image" content="https://lahei7.github.io/images/image-20231007215526443.png">
-<meta property="og:image" content="https://lahei7.github.io/images/image-20231007220154001.png">
+<meta property="og:image" content="https://laohei7.github.io/images/image-20231007215042144.png">
+<meta property="og:image" content="https://laohei7.github.io/images/image-20231007215526443.png">
+<meta property="og:image" content="https://laohei7.github.io/images/image-20231007220154001.png">
 <meta property="article:published_time" content="2023-10-07T13:30:39.000Z">
 <meta property="article:modified_time" content="2023-10-08T11:06:34.214Z">
 <meta property="article:author" content="Lao Hei">
@@ -30,13 +30,13 @@
 <meta property="article:tag" content="博客">
 <meta property="article:tag" content="网站">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://lahei7.github.io/images/image-20231007215042144.png">
+<meta name="twitter:image" content="https://laohei7.github.io/images/image-20231007215042144.png">
     
     
         
     
     
-        <meta property="og:image" content="https://lahei7.github.io/assets/images/rem-2.jpg"/>
+        <meta property="og:image" content="https://laohei7.github.io/assets/images/rem-2.jpg"/>
     
     
     
@@ -345,7 +345,7 @@
 
 
 
-<p>通过以上过程即可完成博客的搭建，通过你的<code>github</code> 仓库名即可在浏览器访问你的博客，如：<a target="_blank" rel="noopener" href="https://laohei7.github.io/">laohei7.github.io</a></p>
+<p>通过以上过程即可完成博客的搭建，通过你的<code>github</code> 仓库名即可在浏览器访问你的博客，如：<a href="https://laohei7.github.io/">laohei7.github.io</a></p>
 
             
 
@@ -552,7 +552,7 @@
                     <div class="media-body">
                         <a
                             class="link-unstyled"
-                            href="https://lahei7.github.io/2023/10/07/Hexo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/"
+                            href="https://laohei7.github.io/2023/10/07/Hexo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/"
                             aria-label=": Hexo和Github搭建博客网站"
                         >
                             <h3 class="media-heading">Hexo和Github搭建博客网站</h3>
@@ -590,7 +590,7 @@
                     <div class="media-body">
                         <a
                             class="link-unstyled"
-                            href="https://lahei7.github.io/2023/10/08/Hexo%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"
+                            href="https://laohei7.github.io/2023/10/08/Hexo%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"
                             aria-label=": Hexo主题美化"
                         >
                             <h3 class="media-heading">Hexo主题美化</h3>
@@ -621,7 +621,7 @@
                     <div class="media-body">
                         <a
                             class="link-unstyled"
-                            href="https://lahei7.github.io/2023/10/08/Dart%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/"
+                            href="https://laohei7.github.io/2023/10/08/Dart%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/"
                             aria-label=": Dart面试笔记"
                         >
                             <h3 class="media-heading">Dart面试笔记</h3>
@@ -646,6 +646,37 @@
                     <hr>
                 </div>
                 
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://laohei7.github.io/2023/10/08/%E3%80%90%E6%AF%8F%E6%97%A5%E4%B8%80%E4%B8%AA%E5%B0%8F%E7%BB%84%E4%BB%B6%E3%80%91IgnorePointer/"
+                            aria-label=": 【每日一个小组件】IgnorePointer"
+                        >
+                            <h3 class="media-heading">【每日一个小组件】IgnorePointer</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2023年10月8日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc -->
+
+<ul>
+<li><a href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0">构造函数</a></li>
+<li><a href="#%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8">简单使用</a></li>
+</ul>
+<!-- tocstop -->
+
+<p><code>IgnorePointer</code>是 <code>Flutter</code>中的一个小部件，它用于包装其他小部件，并可以使这些小部件对用户输入（例如触摸事件）变得不可用。如：当页面处于登陆中时，登陆按钮点击无效。</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
             </div>
         </div>
         <div class="modal-footer">
@@ -653,7 +684,7 @@
                 data-message-zero="没有找到文章"
                 data-message-one="找到 1 篇文章"
                 data-message-other="找到 {n} 篇文章">
-                找到 3 篇文章
+                找到 4 篇文章
             </p>
         </div>
     </div>

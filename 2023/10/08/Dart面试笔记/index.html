@@ -11,28 +11,28 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Lao Hei","sameAs":["https://github.com/laohei7","mailto"],"image":"rem-2.jpg"},"articleBody":"\n\nvar、dynamic、Object\nvar：定义的类型不可变，变量的类型在初始化时根据值的类型进行推断，并且在编译时进行类型检查。\ndynamic：定义的类型可变，变量的类型在运行时可以更改，但在编译时不进行类型检查，因此需要小心使用以避免类型错误。\nObject：它可以引用任何Dart对象，但在不进行类型转换的情况下不能访问对象的成员。\n\n123456789var name = &quot;John&quot;;// name = 40; 赋值其他类型报错dynamic value = 42;value = &quot;Hello&quot;; // 允许赋值其他类型value.indexOf(&quot;e&quot;); // 编译不报错，运行时如果不是String类型将会报错Object obj = &quot;This is a string&quot;;obj.indexOf(&quot;a&quot;); // 编译时报错，调用方法前需要强转为对应的类型\n\n\n\nconst、final\nconst：\n\n必须初始化，只能赋值一次（编译时期赋值）；\nconst关键字即可修饰变量也可用来修饰常量构造函数；\n当const修饰类的构造函数时，它要求该类的所有成员都必须是final的；\nconst修饰的List集合任意索引不可修改；\nconst不可以修饰实例变量，访问类中const修饰的变量需要static修饰。\n\nfinal：\n\n必须初始化，只能赋值一次（运行时期赋值）；\nfinal可修饰实例变量；\nfinal修饰的List集合任意索引可修改；\nfinal 只可用来修饰变量。\n\n\n12345678910111213141516const number = 10;final number2 = 20;class Point&#123;\tfinal int x;\tfinal int y;\tstatic const version = 1.0;\tconst Point(this.x,this.y);&#125;final names = [&quot;Tom&quot;,&quot;Aimer&quot;,&quot;Rem&quot;];names.add(&quot;Fake&quot;); // 允许增删改const names2 = [&quot;Tom&quot;,&quot;Aimer&quot;,&quot;Rem&quot;];// names2.add(&quot;Fake&quot;); 不允许\n\n\n\n??、??&#x3D;\n?? ——&gt; 左边如果为空返回右边的值，否则不处理。\n??= ——&gt; 左边如果为空把B的值赋值给A。\n\n1234567String? str;str ?? printNullInfo();str ??= &quot;Hello World&quot;;void printNullInfo()&#123;\tprint(&quot;value is null&quot;);&#125;\n\n\n\n作用域（权限）\nDart默认为public，以下划线开头的变量、类、函数为private。\n\nget、set\n使用 get 和 set 方法来实现属性的读取和设置。这可以帮助你控制属性的访问，例如对属性的读取和写入进行自定义操作或添加验证逻辑。\n\n1234567891011121314151617181920212223242526272829303132class Person &#123;  String _name = &#x27;&#x27;; // 私有属性  // 使用 get 方法获取属性值  String get name &#123;    return _name;  &#125;  // 使用 set 方法设置属性值，并添加验证逻辑  set name(String value) &#123;    if (value.isNotEmpty) &#123;      _name = value;    &#125; else &#123;      print(&#x27;Name cannot be empty.&#x27;);    &#125;  &#125;&#125;void main() &#123;  var person = Person();  // 使用 get 方法读取属性值  print(person.name); // 输出: &#x27;&#x27;  // 使用 set 方法设置属性值  person.name = &#x27;John&#x27;; // 设置成功  print(person.name); // 输出: &#x27;John&#x27;  // 使用 set 方法设置空值，触发验证逻辑  person.name = &#x27;&#x27;; // 输出: &#x27;Name cannot be empty.&#x27;  print(person.name); // 输出: &#x27;John&#x27;，属性值未改变&#125;\n\n\n\n..（级联操作符）、.（调用操作符）\n.：返回的是该方法返回的值或者属性值。\n..：返回的相当于是this，当前的对象引用。\n\n123456VideoPlayerController videoPlayerController;videoPlayerController =          VideoPlayerController    \t\t.networkUrl(Uri.parse(url))    \t\t..initialize(); // 返回VideoPlayerController// await videoPlayerController.initialize(); // 返回 Future&lt;void&gt;\n\n\n\n空安全\n使用?修饰类型，即可声明变量为可空类型。?.和!空安全操作符。?.在变量为空情况下不会执行调用的方法，但不阻塞后面逻辑运行；!在变量为空时抛出异常。\n\n123String? str;var subStr = str?.substring(0,2);subStr = str!.substring(0,2);\n\n\n\nasync、awaitFuture、StreamIsolate线程模型\nDart为单线程模型。\n\n\nMain &gt; MicroTask &gt; EventQueue\n先开启app执行入口函数main()，执行完成之后，消息机制启动，先是会按照先进先出的顺序逐个执行微任务队列中的任务microtask，事件任务eventtask执行完毕后便会退出，但是，在事件任务执行的过程中也可以插入新的微任务和事件任务，在这种情况下，整个线程的执行过程便是一直在循环，不会退出，而Flutter中，主线程的执行过程正是如此，永不终止。\n在事件循环中，当某个任务发生异常并没有被捕获时，程序并不会退出，而直接导致的结果是当前任务的后续代码就不会被执行了，也就是说一个任务中的异常是不会影响其它任务执行的。\n\n插入微任务\n\n12345// 方式一scheduleMicrotask(callback);// 方式二Future.microtask(callback);\n\n\n插入事件\n\n1234567// 方式一Future(() async &#123;&#125;);// 方式二: async和await关键字void eventTest() async&#123;\tawait Future(() async &#123;&#125;);&#125;\n\n","dateCreated":"2023-10-08T17:32:16+08:00","dateModified":"2023-10-08T19:08:52+08:00","datePublished":"2023-10-08T17:32:16+08:00","description":"\n\nvar、dynamic、Object\nvar：定义的类型不可变，变量的类型在初始化时根据值的类型进行推断，并且在编译时进行类型检查。\ndynamic：定义的类型可变，变量的类型在运行时可以更改，但在编译时不进行类型检查，因此需要小心使用以避免类型错误。\nObject：它可以引用任何Dart对象，但在不进行类型转换的情况下不能访问对象的成员。\n\n123456789var name = &quot;John&quot;;// name = 40; 赋值其他类型报错dynamic value = 42;value = &quot;Hello&quot;; // 允许赋值其他类型value.indexOf(&quot;e&quot;); // 编译不报错，运行时如果不是String类型将会报错Object obj = &quot;This is a string&quot;;obj.indexOf(&quot;a&quot;); // 编译时报错，调用方法前需要强转为对应的类型","headline":"Dart面试笔记","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://lahei7.github.io/2023/10/08/Dart%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/"},"publisher":{"@type":"Organization","name":"Lao Hei","sameAs":["https://github.com/laohei7","mailto"],"image":"rem-2.jpg","logo":{"@type":"ImageObject","url":"rem-2.jpg"}},"url":"https://lahei7.github.io/2023/10/08/Dart%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/","keywords":"Dart, Flutter"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Lao Hei","sameAs":["https://github.com/laohei7","mailto"],"image":"rem-2.jpg"},"articleBody":"\n\nvar、dynamic、Object\nvar：定义的类型不可变，变量的类型在初始化时根据值的类型进行推断，并且在编译时进行类型检查。\ndynamic：定义的类型可变，变量的类型在运行时可以更改，但在编译时不进行类型检查，因此需要小心使用以避免类型错误。\nObject：它可以引用任何Dart对象，但在不进行类型转换的情况下不能访问对象的成员。\n\n123456789var name = &quot;John&quot;;// name = 40; 赋值其他类型报错dynamic value = 42;value = &quot;Hello&quot;; // 允许赋值其他类型value.indexOf(&quot;e&quot;); // 编译不报错，运行时如果不是String类型将会报错Object obj = &quot;This is a string&quot;;obj.indexOf(&quot;a&quot;); // 编译时报错，调用方法前需要强转为对应的类型\n\n\n\nconst、final\nconst：\n\n必须初始化，只能赋值一次（编译时期赋值）；\nconst关键字即可修饰变量也可用来修饰常量构造函数；\n当const修饰类的构造函数时，它要求该类的所有成员都必须是final的；\nconst修饰的List集合任意索引不可修改；\nconst不可以修饰实例变量，访问类中const修饰的变量需要static修饰。\n\nfinal：\n\n必须初始化，只能赋值一次（运行时期赋值）；\nfinal可修饰实例变量；\nfinal修饰的List集合任意索引可修改；\nfinal 只可用来修饰变量。\n\n\n12345678910111213141516const number = 10;final number2 = 20;class Point&#123;\tfinal int x;\tfinal int y;\tstatic const version = 1.0;\tconst Point(this.x,this.y);&#125;final names = [&quot;Tom&quot;,&quot;Aimer&quot;,&quot;Rem&quot;];names.add(&quot;Fake&quot;); // 允许增删改const names2 = [&quot;Tom&quot;,&quot;Aimer&quot;,&quot;Rem&quot;];// names2.add(&quot;Fake&quot;); 不允许\n\n\n\n??、??&#x3D;\n?? ——&gt; 左边如果为空返回右边的值，否则不处理。\n??= ——&gt; 左边如果为空把B的值赋值给A。\n\n1234567String? str;str ?? printNullInfo();str ??= &quot;Hello World&quot;;void printNullInfo()&#123;\tprint(&quot;value is null&quot;);&#125;\n\n\n\n作用域（权限）\nDart默认为public，以下划线开头的变量、类、函数为private。\n\nget、set\n使用 get 和 set 方法来实现属性的读取和设置。这可以帮助你控制属性的访问，例如对属性的读取和写入进行自定义操作或添加验证逻辑。\n\n1234567891011121314151617181920212223242526272829303132class Person &#123;  String _name = &#x27;&#x27;; // 私有属性  // 使用 get 方法获取属性值  String get name &#123;    return _name;  &#125;  // 使用 set 方法设置属性值，并添加验证逻辑  set name(String value) &#123;    if (value.isNotEmpty) &#123;      _name = value;    &#125; else &#123;      print(&#x27;Name cannot be empty.&#x27;);    &#125;  &#125;&#125;void main() &#123;  var person = Person();  // 使用 get 方法读取属性值  print(person.name); // 输出: &#x27;&#x27;  // 使用 set 方法设置属性值  person.name = &#x27;John&#x27;; // 设置成功  print(person.name); // 输出: &#x27;John&#x27;  // 使用 set 方法设置空值，触发验证逻辑  person.name = &#x27;&#x27;; // 输出: &#x27;Name cannot be empty.&#x27;  print(person.name); // 输出: &#x27;John&#x27;，属性值未改变&#125;\n\n\n\n..（级联操作符）、.（调用操作符）\n.：返回的是该方法返回的值或者属性值。\n..：返回的相当于是this，当前的对象引用。\n\n123456VideoPlayerController videoPlayerController;videoPlayerController =          VideoPlayerController    \t\t.networkUrl(Uri.parse(url))    \t\t..initialize(); // 返回VideoPlayerController// await videoPlayerController.initialize(); // 返回 Future&lt;void&gt;\n\n\n\n空安全\n使用?修饰类型，即可声明变量为可空类型。?.和!空安全操作符。?.在变量为空情况下不会执行调用的方法，但不阻塞后面逻辑运行；!在变量为空时抛出异常。\n\n123String? str;var subStr = str?.substring(0,2);subStr = str!.substring(0,2);\n\n\n\nasync、awaitFuture、StreamIsolate线程模型\nDart为单线程模型。\n\n\nMain &gt; MicroTask &gt; EventQueue\n先开启app执行入口函数main()，执行完成之后，消息机制启动，先是会按照先进先出的顺序逐个执行微任务队列中的任务microtask，事件任务eventtask执行完毕后便会退出，但是，在事件任务执行的过程中也可以插入新的微任务和事件任务，在这种情况下，整个线程的执行过程便是一直在循环，不会退出，而Flutter中，主线程的执行过程正是如此，永不终止。\n在事件循环中，当某个任务发生异常并没有被捕获时，程序并不会退出，而直接导致的结果是当前任务的后续代码就不会被执行了，也就是说一个任务中的异常是不会影响其它任务执行的。\n\n插入微任务\n\n12345// 方式一scheduleMicrotask(callback);// 方式二Future.microtask(callback);\n\n\n插入事件\n\n1234567// 方式一Future(() async &#123;&#125;);// 方式二: async和await关键字void eventTest() async&#123;\tawait Future(() async &#123;&#125;);&#125;\n\n","dateCreated":"2023-10-08T17:32:16+08:00","dateModified":"2023-10-08T19:08:52+08:00","datePublished":"2023-10-08T17:32:16+08:00","description":"\n\nvar、dynamic、Object\nvar：定义的类型不可变，变量的类型在初始化时根据值的类型进行推断，并且在编译时进行类型检查。\ndynamic：定义的类型可变，变量的类型在运行时可以更改，但在编译时不进行类型检查，因此需要小心使用以避免类型错误。\nObject：它可以引用任何Dart对象，但在不进行类型转换的情况下不能访问对象的成员。\n\n123456789var name = &quot;John&quot;;// name = 40; 赋值其他类型报错dynamic value = 42;value = &quot;Hello&quot;; // 允许赋值其他类型value.indexOf(&quot;e&quot;); // 编译不报错，运行时如果不是String类型将会报错Object obj = &quot;This is a string&quot;;obj.indexOf(&quot;a&quot;); // 编译时报错，调用方法前需要强转为对应的类型","headline":"Dart面试笔记","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://laohei7.github.io/2023/10/08/Dart%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/"},"publisher":{"@type":"Organization","name":"Lao Hei","sameAs":["https://github.com/laohei7","mailto"],"image":"rem-2.jpg","logo":{"@type":"ImageObject","url":"rem-2.jpg"}},"url":"https://laohei7.github.io/2023/10/08/Dart%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/","keywords":"Dart, Flutter"}</script>
     <meta name="description" content="var、dynamic、Object var：定义的类型不可变，变量的类型在初始化时根据值的类型进行推断，并且在编译时进行类型检查。 dynamic：定义的类型可变，变量的类型在运行时可以更改，但在编译时不进行类型检查，因此需要小心使用以避免类型错误。 Object：它可以引用任何Dart对象，但在不进行类型转换的情况下不能访问对象的成员。  123456789var name &#x3D; &amp;quot">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Dart面试笔记">
-<meta property="og:url" content="https://lahei7.github.io/2023/10/08/Dart%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:url" content="https://laohei7.github.io/2023/10/08/Dart%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Lao Hei Blog">
 <meta property="og:description" content="var、dynamic、Object var：定义的类型不可变，变量的类型在初始化时根据值的类型进行推断，并且在编译时进行类型检查。 dynamic：定义的类型可变，变量的类型在运行时可以更改，但在编译时不进行类型检查，因此需要小心使用以避免类型错误。 Object：它可以引用任何Dart对象，但在不进行类型转换的情况下不能访问对象的成员。  123456789var name &#x3D; &amp;quot">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://lahei7.github.io/images/831566-20201213134139737-1310749493.png">
+<meta property="og:image" content="https://laohei7.github.io/images/831566-20201213134139737-1310749493.png">
 <meta property="article:published_time" content="2023-10-08T09:32:16.000Z">
 <meta property="article:modified_time" content="2023-10-08T11:08:52.069Z">
 <meta property="article:author" content="Lao Hei">
 <meta property="article:tag" content="Dart">
 <meta property="article:tag" content="Flutter">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://lahei7.github.io/images/831566-20201213134139737-1310749493.png">
+<meta name="twitter:image" content="https://laohei7.github.io/images/831566-20201213134139737-1310749493.png">
     
     
         
     
     
-        <meta property="og:image" content="https://lahei7.github.io/assets/images/rem-2.jpg"/>
+        <meta property="og:image" content="https://laohei7.github.io/assets/images/rem-2.jpg"/>
     
     
     
@@ -378,11 +378,14 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a
-                        class="post-action-btn btn btn--disabled"
-                        aria-hidden="true"
-                    >
-                        
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2023/10/08/%E3%80%90%E6%AF%8F%E6%97%A5%E4%B8%80%E4%B8%AA%E5%B0%8F%E7%BB%84%E4%BB%B6%E3%80%91IgnorePointer/"
+                    data-tooltip="【每日一个小组件】IgnorePointer"
+                    aria-label="上一篇: 【每日一个小组件】IgnorePointer"
+                >
+                    
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
                         <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
                     </a>
@@ -451,11 +454,14 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a
-                        class="post-action-btn btn btn--disabled"
-                        aria-hidden="true"
-                    >
-                        
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2023/10/08/%E3%80%90%E6%AF%8F%E6%97%A5%E4%B8%80%E4%B8%AA%E5%B0%8F%E7%BB%84%E4%BB%B6%E3%80%91IgnorePointer/"
+                    data-tooltip="【每日一个小组件】IgnorePointer"
+                    aria-label="上一篇: 【每日一个小组件】IgnorePointer"
+                >
+                    
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
                         <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
                     </a>
@@ -563,7 +569,7 @@
                     <div class="media-body">
                         <a
                             class="link-unstyled"
-                            href="https://lahei7.github.io/2023/10/07/Hexo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/"
+                            href="https://laohei7.github.io/2023/10/07/Hexo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/"
                             aria-label=": Hexo和Github搭建博客网站"
                         >
                             <h3 class="media-heading">Hexo和Github搭建博客网站</h3>
@@ -601,7 +607,7 @@
                     <div class="media-body">
                         <a
                             class="link-unstyled"
-                            href="https://lahei7.github.io/2023/10/08/Hexo%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"
+                            href="https://laohei7.github.io/2023/10/08/Hexo%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"
                             aria-label=": Hexo主题美化"
                         >
                             <h3 class="media-heading">Hexo主题美化</h3>
@@ -632,7 +638,7 @@
                     <div class="media-body">
                         <a
                             class="link-unstyled"
-                            href="https://lahei7.github.io/2023/10/08/Dart%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/"
+                            href="https://laohei7.github.io/2023/10/08/Dart%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/"
                             aria-label=": Dart面试笔记"
                         >
                             <h3 class="media-heading">Dart面试笔记</h3>
@@ -657,6 +663,37 @@
                     <hr>
                 </div>
                 
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://laohei7.github.io/2023/10/08/%E3%80%90%E6%AF%8F%E6%97%A5%E4%B8%80%E4%B8%AA%E5%B0%8F%E7%BB%84%E4%BB%B6%E3%80%91IgnorePointer/"
+                            aria-label=": 【每日一个小组件】IgnorePointer"
+                        >
+                            <h3 class="media-heading">【每日一个小组件】IgnorePointer</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2023年10月8日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!-- toc -->
+
+<ul>
+<li><a href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0">构造函数</a></li>
+<li><a href="#%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8">简单使用</a></li>
+</ul>
+<!-- tocstop -->
+
+<p><code>IgnorePointer</code>是 <code>Flutter</code>中的一个小部件，它用于包装其他小部件，并可以使这些小部件对用户输入（例如触摸事件）变得不可用。如：当页面处于登陆中时，登陆按钮点击无效。</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
             </div>
         </div>
         <div class="modal-footer">
@@ -664,7 +701,7 @@
                 data-message-zero="没有找到文章"
                 data-message-one="找到 1 篇文章"
                 data-message-other="找到 {n} 篇文章">
-                找到 3 篇文章
+                找到 4 篇文章
             </p>
         </div>
     </div>
