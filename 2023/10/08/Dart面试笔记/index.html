@@ -6,18 +6,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Lao Hei Blog">
-    <title>归档 - Lao Hei Blog</title>
+    <title>Dart面试笔记 - Lao Hei Blog</title>
     <meta name="author" content="Lao Hei">
     
     
     
-    <script type="application/ld+json">{}</script>
-    <meta property="og:type" content="blog">
-<meta property="og:title" content="Lao Hei Blog">
-<meta property="og:url" content="https://lahei7.github.io/archives/index.html">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Lao Hei","sameAs":["https://github.com/laohei7","mailto"],"image":"rem-2.jpg"},"articleBody":"var、dynamic、Object\nvar：定义的类型不可变，变量的类型在初始化时根据值的类型进行推断，并且在编译时进行类型检查。\ndynamic：定义的类型可变，变量的类型在运行时可以更改，但在编译时不进行类型检查，因此需要小心使用以避免类型错误。\nObject：它可以引用任何Dart对象，但在不进行类型转换的情况下不能访问对象的成员。\n\n123456789var name = &quot;John&quot;;// name = 40; 赋值其他类型报错dynamic value = 42;value = &quot;Hello&quot;; // 允许赋值其他类型value.indexOf(&quot;e&quot;); // 编译不报错，运行时如果不是String类型将会报错Object obj = &quot;This is a string&quot;;obj.indexOf(&quot;a&quot;); // 编译时报错，调用方法前需要强转为对应的类型\n\n\n\nconst、final\nconst：\n\n必须初始化，只能赋值一次（编译时期赋值）；\nconst关键字即可修饰变量也可用来修饰常量构造函数；\n当const修饰类的构造函数时，它要求该类的所有成员都必须是final的；\nconst修饰的List集合任意索引不可修改；\nconst不可以修饰实例变量，访问类中const修饰的变量需要static修饰。\n\nfinal：\n\n必须初始化，只能赋值一次（运行时期赋值）；\nfinal可修饰实例变量；\nfinal修饰的List集合任意索引可修改；\nfinal 只可用来修饰变量。\n\n\n12345678910111213141516const number = 10;final number2 = 20;class Point&#123;\tfinal int x;\tfinal int y;\tstatic const version = 1.0;\tconst Point(this.x,this.y);&#125;final names = [&quot;Tom&quot;,&quot;Aimer&quot;,&quot;Rem&quot;];names.add(&quot;Fake&quot;); // 允许增删改const names2 = [&quot;Tom&quot;,&quot;Aimer&quot;,&quot;Rem&quot;];// names2.add(&quot;Fake&quot;); 不允许\n\n\n\n??、??&#x3D;\n?? ——&gt; 左边如果为空返回右边的值，否则不处理。\n??= ——&gt; 左边如果为空把B的值赋值给A。\n\n1234567String? str;str ?? printNullInfo();str ??= &quot;Hello World&quot;;void printNullInfo()&#123;\tprint(&quot;value is null&quot;);&#125;\n\n\n\n作用域（权限）\nDart默认为public，以下划线开头的变量、类、函数为private。\n\nget、set\n使用 get 和 set 方法来实现属性的读取和设置。这可以帮助你控制属性的访问，例如对属性的读取和写入进行自定义操作或添加验证逻辑。\n\n1234567891011121314151617181920212223242526272829303132class Person &#123;  String _name = &#x27;&#x27;; // 私有属性  // 使用 get 方法获取属性值  String get name &#123;    return _name;  &#125;  // 使用 set 方法设置属性值，并添加验证逻辑  set name(String value) &#123;    if (value.isNotEmpty) &#123;      _name = value;    &#125; else &#123;      print(&#x27;Name cannot be empty.&#x27;);    &#125;  &#125;&#125;void main() &#123;  var person = Person();  // 使用 get 方法读取属性值  print(person.name); // 输出: &#x27;&#x27;  // 使用 set 方法设置属性值  person.name = &#x27;John&#x27;; // 设置成功  print(person.name); // 输出: &#x27;John&#x27;  // 使用 set 方法设置空值，触发验证逻辑  person.name = &#x27;&#x27;; // 输出: &#x27;Name cannot be empty.&#x27;  print(person.name); // 输出: &#x27;John&#x27;，属性值未改变&#125;\n\n\n\n..（级联操作符）、.（调用操作符）\n.：返回的是该方法返回的值或者属性值。\n..：返回的相当于是this，当前的对象引用。\n\n123456VideoPlayerController videoPlayerController;videoPlayerController =          VideoPlayerController    \t\t.networkUrl(Uri.parse(url))    \t\t..initialize(); // 返回VideoPlayerController// await videoPlayerController.initialize(); // 返回 Future&lt;void&gt;\n\n","dateCreated":"2023-10-08T17:32:16+08:00","dateModified":"2023-10-08T18:22:00+08:00","datePublished":"2023-10-08T17:32:16+08:00","description":"","headline":"Dart面试笔记","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://lahei7.github.io/2023/10/08/Dart%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/"},"publisher":{"@type":"Organization","name":"Lao Hei","sameAs":["https://github.com/laohei7","mailto"],"image":"rem-2.jpg","logo":{"@type":"ImageObject","url":"rem-2.jpg"}},"url":"https://lahei7.github.io/2023/10/08/Dart%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/","keywords":"Dart, Flutter"}</script>
+    <meta name="description" content="var、dynamic、Object var：定义的类型不可变，变量的类型在初始化时根据值的类型进行推断，并且在编译时进行类型检查。 dynamic：定义的类型可变，变量的类型在运行时可以更改，但在编译时不进行类型检查，因此需要小心使用以避免类型错误。 Object：它可以引用任何Dart对象，但在不进行类型转换的情况下不能访问对象的成员。  123456789var name &#x3D; &quot;J">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Dart面试笔记">
+<meta property="og:url" content="https://lahei7.github.io/2023/10/08/Dart%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Lao Hei Blog">
+<meta property="og:description" content="var、dynamic、Object var：定义的类型不可变，变量的类型在初始化时根据值的类型进行推断，并且在编译时进行类型检查。 dynamic：定义的类型可变，变量的类型在运行时可以更改，但在编译时不进行类型检查，因此需要小心使用以避免类型错误。 Object：它可以引用任何Dart对象，但在不进行类型转换的情况下不能访问对象的成员。  123456789var name &#x3D; &quot;J">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-10-08T09:32:16.000Z">
+<meta property="article:modified_time" content="2023-10-08T10:22:00.160Z">
 <meta property="article:author" content="Lao Hei">
+<meta property="article:tag" content="Dart">
+<meta property="article:tag" content="Flutter">
 <meta name="twitter:card" content="summary">
     
     
@@ -39,6 +45,8 @@
     
 
     
+        
+    
 </head>
 
     <body>
@@ -52,7 +60,7 @@
         
     
 
-<header id="header" data-behavior="1">
+<header id="header" data-behavior="4">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
         <a
@@ -85,7 +93,7 @@
         
     
 
-<nav id="sidebar" data-behavior="1">
+<nav id="sidebar" data-behavior="4">
     <div class="sidebar-container">
         
             <div class="sidebar-profile">
@@ -229,30 +237,22 @@
 </nav>
 
             
-            <div id="main" data-behavior="1"
+            <div id="main" data-behavior="4"
                  class="
                         hasCoverMetaIn
                         ">
                 
-    <section class="postShorten-group main-content-wrap">
+<article class="post">
     
     
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2023/10/08/Dart%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/"
-                            aria-label=": Dart面试笔记"
-                        >
-                            Dart面试笔记
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            Dart面试笔记
+        </h1>
+    
+    
+        <div class="post-meta">
     <time datetime="2023-10-08T17:32:16+08:00">
 	
 		    2023 年 10 月 8 日
@@ -261,10 +261,13 @@
     
 </div>
 
-            </div>
-            
-                <div class="postShorten-content">
-                    <h2 id="var、dynamic、Object"><a href="#var、dynamic、Object" class="headerlink" title="var、dynamic、Object"></a>var、dynamic、Object</h2><blockquote>
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <h2 id="var、dynamic、Object"><a href="#var、dynamic、Object" class="headerlink" title="var、dynamic、Object"></a>var、dynamic、Object</h2><blockquote>
 <p><code>var</code>：定义的类型不可变，变量的类型在初始化时根据值的类型进行推断，并且在编译时进行类型检查。</p>
 <p><code>dynamic</code>：定义的类型可变，变量的类型在运行时可以更改，但在编译时不进行类型检查，因此需要小心使用以避免类型错误。</p>
 <p><code>Object</code>：它可以引用任何<code>Dart</code>对象，但在不进行类型转换的情况下不能访问对象的成员。</p>
@@ -319,158 +322,82 @@
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">VideoPlayerController videoPlayerController;</span><br><span class="line">videoPlayerController =</span><br><span class="line">          VideoPlayerController</span><br><span class="line">    		.networkUrl(<span class="built_in">Uri</span>.parse(url))</span><br><span class="line">    		..initialize(); <span class="comment">// 返回VideoPlayerController</span></span><br><span class="line"><span class="comment">// await videoPlayerController.initialize(); // 返回 Future&lt;void&gt;</span></span><br></pre></td></tr></table></figure>
 
 
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/2023/10/08/Dart%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                评论和共享
-                            </a>
-                        </p>
-                    
-                </div>
             
+
+
         </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
         
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-right">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2023/10/08/Hexo%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"
-                            aria-label=": Hexo主题美化"
-                        >
-                            Hexo主题美化
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2023-10-08T14:02:45+08:00">
-	
-		    2023 年 10 月 8 日
-    	
-    </time>
-    
-        <span>发布在 </span>
-        
-    <a class="category-link" href="/categories/Hexo/">Hexo</a>
-
-
-    
-</div>
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">标签</span><br/>
+                
+    <a class="tag tag--primary tag--small t-none-link" href="/tags/Dart/" rel="tag">Dart</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/Flutter/" rel="tag">Flutter</a>
 
             </div>
-            
-                <div class="postShorten-excerpt">
-                    <h2 id="主题推荐"><a href="#主题推荐" class="headerlink" title="主题推荐"></a>主题推荐</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak#tranquilpeak">Tranquilpeak</a></p>
-</blockquote>
-<p><img src="https://camo.githubusercontent.com/48abceabe917e8d1c853d8fc1046d5174d7f638ffc19f563e6c5da00d808163b/687474703a2f2f6431753962697761786a6e6777672e636c6f756466726f6e742e6e65742f73686f7763617365732f73686f77636173652d76322e6a7067"></p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://github.com/Ailln/awesome-hexo-theme">awesome-hexo-theme(十个精致Hexo主题)</a></p>
-</blockquote>
-                    
-                        <a
-                            href="/2023/10/08/Hexo%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"
-                            class="postShorten-excerpt_link link"
-                            aria-label=": Hexo主题美化"
-                        >
-                            阅读全文
-                        </a>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a
+                        class="post-action-btn btn btn--disabled"
+                        aria-hidden="true"
+                    >
                         
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
                     
-                </div>
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2023/10/08/Hexo%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"
+                    data-tooltip="Hexo主题美化"
+                    aria-label="下一篇: Hexo主题美化"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Diesen Beitrag teilen"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
             
-        </div>
         
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-right">
-        <div class="postShorten-wrap">
+        <li class="post-action">
             
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2023/10/07/Hexo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/"
-                            aria-label=": Hexo和Github搭建博客网站"
-                        >
-                            Hexo和Github搭建博客网站
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2023-10-07T21:30:39+08:00">
-	
-		    2023 年 10 月 7 日
-    	
-    </time>
-    
-        <span>发布在 </span>
-        
-    <a class="category-link" href="/categories/Hexo/">Hexo</a>
-
-
-    
-</div>
-
-            </div>
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
             
-                <div class="postShorten-excerpt">
-                    <h2 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h2><blockquote>
-<p>Node JS</p>
-</blockquote>
-<ul>
-<li>Linux(Ubuntu)</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install nodejs</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Windows</li>
-</ul>
-<p>前往官网下载安装包，<a target="_blank" rel="noopener" href="https://nodejs.org/en/download">下载地址</a>，安装完成后记得设置 <code>node</code> 环境变量。</p>
-<p><code>Node JS</code> 环境安装好后，通过以下命令可以验证是否安装成功</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -V</span><br></pre></td></tr></table></figure>
-                    
-                        <a
-                            href="/2023/10/07/Hexo%E5%92%8CGithub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/"
-                            class="postShorten-excerpt_link link"
-                            aria-label=": Hexo和Github搭建博客网站"
-                        >
-                            阅读全文
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    <div class="pagination-bar">
-    <ul class="pagination">
-        
-        
-        <li class="pagination-number">第 1 页 共 1 页</li>
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
     </ul>
 </div>
 
-</section>
+
+        
+        
+            
+        
+    </div>
+</article>
 
 
 
@@ -481,6 +408,66 @@
 </footer>
 
             </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a
+                        class="post-action-btn btn btn--disabled"
+                        aria-hidden="true"
+                    >
+                        
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2023/10/08/Hexo%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"
+                    data-tooltip="Hexo主题美化"
+                    aria-label="下一篇: Hexo主题美化"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Diesen Beitrag teilen"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+
             
         </div>
         
@@ -645,6 +632,8 @@
 
 <!--SCRIPTS END-->
 
+
+    
 
 
 

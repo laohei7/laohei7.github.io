@@ -237,6 +237,111 @@
     <section class="postShorten-group main-content-wrap">
     
     
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
+                            href="/2023/10/08/Dart%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/"
+                            aria-label=": Dart面试笔记"
+                        >
+                            Dart面试笔记
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2023-10-08T17:32:16+08:00">
+	
+		    2023 年 10 月 8 日
+    	
+    </time>
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h2 id="var、dynamic、Object"><a href="#var、dynamic、Object" class="headerlink" title="var、dynamic、Object"></a>var、dynamic、Object</h2><blockquote>
+<p><code>var</code>：定义的类型不可变，变量的类型在初始化时根据值的类型进行推断，并且在编译时进行类型检查。</p>
+<p><code>dynamic</code>：定义的类型可变，变量的类型在运行时可以更改，但在编译时不进行类型检查，因此需要小心使用以避免类型错误。</p>
+<p><code>Object</code>：它可以引用任何<code>Dart</code>对象，但在不进行类型转换的情况下不能访问对象的成员。</p>
+</blockquote>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">&quot;John&quot;</span>;</span><br><span class="line"><span class="comment">// name = 40; 赋值其他类型报错</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">dynamic</span> value = <span class="number">42</span>;</span><br><span class="line">value = <span class="string">&quot;Hello&quot;</span>; <span class="comment">// 允许赋值其他类型</span></span><br><span class="line">value.indexOf(<span class="string">&quot;e&quot;</span>); <span class="comment">// 编译不报错，运行时如果不是String类型将会报错</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span> obj = <span class="string">&quot;This is a string&quot;</span>;</span><br><span class="line">obj.indexOf(<span class="string">&quot;a&quot;</span>); <span class="comment">// 编译时报错，调用方法前需要强转为对应的类型</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="const、final"><a href="#const、final" class="headerlink" title="const、final"></a>const、final</h2><blockquote>
+<p><code>const</code>：</p>
+<ul>
+<li>必须初始化，只能赋值一次（编译时期赋值）；</li>
+<li><code>const</code>关键字即可修饰变量也可用来修饰常量构造函数；</li>
+<li>当<code>const</code>修饰类的构造函数时，它要求该类的所有成员都必须是<code>final</code>的；</li>
+<li><code>const</code>修饰的<code>List</code>集合任意索引不可修改；</li>
+<li><code>const</code>不可以修饰实例变量，访问类中<code>const</code>修饰的变量需要<code>static</code>修饰。</li>
+</ul>
+<p><code>final</code>：</p>
+<ul>
+<li>必须初始化，只能赋值一次（运行时期赋值）；</li>
+<li><code>final</code>可修饰实例变量；</li>
+<li><code>final</code>修饰的<code>List</code>集合任意索引可修改；</li>
+<li><code>final</code> 只可用来修饰变量。</li>
+</ul>
+</blockquote>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> number = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">final</span> number2 = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span></span>&#123;</span><br><span class="line">	<span class="keyword">final</span> <span class="built_in">int</span> x;</span><br><span class="line">	<span class="keyword">final</span> <span class="built_in">int</span> y;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">const</span> version = <span class="number">1.0</span>;</span><br><span class="line">	<span class="keyword">const</span> Point(<span class="keyword">this</span>.x,<span class="keyword">this</span>.y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">final</span> names = [<span class="string">&quot;Tom&quot;</span>,<span class="string">&quot;Aimer&quot;</span>,<span class="string">&quot;Rem&quot;</span>];</span><br><span class="line">names.add(<span class="string">&quot;Fake&quot;</span>); <span class="comment">// 允许增删改</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> names2 = [<span class="string">&quot;Tom&quot;</span>,<span class="string">&quot;Aimer&quot;</span>,<span class="string">&quot;Rem&quot;</span>];</span><br><span class="line"><span class="comment">// names2.add(&quot;Fake&quot;); 不允许</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="、"><a href="#、" class="headerlink" title="??、??&#x3D;"></a>??、??&#x3D;</h2><blockquote>
+<p><code>??</code> ——&gt; 左边如果为空返回右边的值，否则不处理。</p>
+<p><code>??=</code> ——&gt; 左边如果为空把B的值赋值给A。</p>
+</blockquote>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String?</span> str;</span><br><span class="line">str ?? printNullInfo();</span><br><span class="line">str ??= <span class="string">&quot;Hello World&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> printNullInfo()&#123;</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;value is null&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="作用域（权限）"><a href="#作用域（权限）" class="headerlink" title="作用域（权限）"></a>作用域（权限）</h2><blockquote>
+<p><code>Dart</code>默认为<code>public</code>，以下划线开头的变量、类、函数为<code>private</code>。</p>
+</blockquote>
+<h2 id="get、set"><a href="#get、set" class="headerlink" title="get、set"></a>get、set</h2><blockquote>
+<p>使用 <code>get</code> 和 <code>set</code> 方法来实现属性的读取和设置。这可以帮助你控制属性的访问，例如对属性的读取和写入进行自定义操作或添加验证逻辑。</p>
+</blockquote>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="built_in">String</span> _name = <span class="string">&#x27;&#x27;</span>; <span class="comment">// 私有属性</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 使用 get 方法获取属性值</span></span><br><span class="line">  <span class="built_in">String</span> <span class="keyword">get</span> name &#123;</span><br><span class="line">    <span class="keyword">return</span> _name;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 使用 set 方法设置属性值，并添加验证逻辑</span></span><br><span class="line">  <span class="keyword">set</span> name(<span class="built_in">String</span> value) &#123;</span><br><span class="line">    <span class="keyword">if</span> (value.isNotEmpty) &#123;</span><br><span class="line">      _name = value;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">print</span>(<span class="string">&#x27;Name cannot be empty.&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  <span class="keyword">var</span> person = Person();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 使用 get 方法读取属性值</span></span><br><span class="line">  <span class="built_in">print</span>(person.name); <span class="comment">// 输出: &#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 使用 set 方法设置属性值</span></span><br><span class="line">  person.name = <span class="string">&#x27;John&#x27;</span>; <span class="comment">// 设置成功</span></span><br><span class="line">  <span class="built_in">print</span>(person.name); <span class="comment">// 输出: &#x27;John&#x27;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 使用 set 方法设置空值，触发验证逻辑</span></span><br><span class="line">  person.name = <span class="string">&#x27;&#x27;</span>; <span class="comment">// 输出: &#x27;Name cannot be empty.&#x27;</span></span><br><span class="line">  <span class="built_in">print</span>(person.name); <span class="comment">// 输出: &#x27;John&#x27;，属性值未改变</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="（级联操作符）、-（调用操作符）"><a href="#（级联操作符）、-（调用操作符）" class="headerlink" title="..（级联操作符）、.（调用操作符）"></a>..（级联操作符）、.（调用操作符）</h2><blockquote>
+<p><code>.</code>：返回的是该方法返回的值或者属性值。</p>
+<p><code>..</code>：返回的相当于是<code>this</code>，当前的对象引用。</p>
+</blockquote>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">VideoPlayerController videoPlayerController;</span><br><span class="line">videoPlayerController =</span><br><span class="line">          VideoPlayerController</span><br><span class="line">    		.networkUrl(<span class="built_in">Uri</span>.parse(url))</span><br><span class="line">    		..initialize(); <span class="comment">// 返回VideoPlayerController</span></span><br><span class="line"><span class="comment">// await videoPlayerController.initialize(); // 返回 Future&lt;void&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/2023/10/08/Dart%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                评论和共享
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
     <article class="postShorten postShorten--thumbnailimg-right">
         <div class="postShorten-wrap">
             
@@ -495,6 +600,29 @@
                     <hr>
                 </div>
                 
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://lahei7.github.io/2023/10/08/Dart%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/"
+                            aria-label=": Dart面试笔记"
+                        >
+                            <h3 class="media-heading">Dart面试笔记</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2023年10月8日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
             </div>
         </div>
         <div class="modal-footer">
@@ -502,7 +630,7 @@
                 data-message-zero="没有找到文章"
                 data-message-one="找到 1 篇文章"
                 data-message-other="找到 {n} 篇文章">
-                找到 2 篇文章
+                找到 3 篇文章
             </p>
         </div>
     </div>
