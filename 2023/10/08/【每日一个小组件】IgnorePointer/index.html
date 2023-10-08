@@ -11,16 +11,16 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Lao Hei","sameAs":["https://github.com/laohei7","mailto"],"image":"rem-2.jpg"},"articleBody":"\n\n\n构造函数\n简单使用\n\n\n\nIgnorePointer是 Flutter中的一个小部件，它用于包装其他小部件，并可以使这些小部件对用户输入（例如触摸事件）变得不可用。如：当页面处于登陆中时，登陆按钮点击无效。\n\n\n构造函数12345678910const IgnorePointer(&#123;  super.key,  this.ignoring = true,  @Deprecated(    &#x27;Use ExcludeSemantics or create a custom ignore pointer widget instead. &#x27;    &#x27;This feature was deprecated after v3.8.0-12.0.pre.&#x27;  )  this.ignoringSemantics,  super.child,&#125;);\n\n\nchild（Widget）：IgnorePointer包装的子小部件。只有这个子小部件会受到IgnorePointer的影响。\nignoring（bool）：一个布尔值，用于控制是否忽略用户输入。如果设置为true，则子小部件将不响应用户输入；如果设置为 false，则子小部件将正常响应用户输入。\n**ignoringSemantics**（bool）：一个布尔值，用于控制是否忽略语义信息。如果设置为true，则子小部件将不会报告语义信息，这在某些情况下可能会影响到辅助功能。\n\n简单使用123456789IgnorePointer(  ignoring: true, // true --&gt; Button的点击事件失效  child: ElevatedButton(    onPressed: () &#123;      // 按钮点击事件处理    &#125;,    child: Text(&#x27;Click Me&#x27;),  ),)\n\n进一步可以根据应用状态（StatefulWidget等更新状态）设置ignoring属性达到控制是否忽略用户输入。\n","dateCreated":"2023-10-08T23:35:16+08:00","dateModified":"2023-10-08T23:45:32+08:00","datePublished":"2023-10-08T23:35:16+08:00","description":"\n\n\n构造函数\n简单使用\n\n\n\nIgnorePointer是 Flutter中的一个小部件，它用于包装其他小部件，并可以使这些小部件对用户输入（例如触摸事件）变得不可用。如：当页面处于登陆中时，登陆按钮点击无效。","headline":"【每日一个小组件】IgnorePointer","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://laohei7.github.io/2023/10/08/%E3%80%90%E6%AF%8F%E6%97%A5%E4%B8%80%E4%B8%AA%E5%B0%8F%E7%BB%84%E4%BB%B6%E3%80%91IgnorePointer/"},"publisher":{"@type":"Organization","name":"Lao Hei","sameAs":["https://github.com/laohei7","mailto"],"image":"rem-2.jpg","logo":{"@type":"ImageObject","url":"rem-2.jpg"}},"url":"https://laohei7.github.io/2023/10/08/%E3%80%90%E6%AF%8F%E6%97%A5%E4%B8%80%E4%B8%AA%E5%B0%8F%E7%BB%84%E4%BB%B6%E3%80%91IgnorePointer/","keywords":"flutter, dart, 每日一个小组件"}</script>
-    <meta name="description" content="构造函数 简单使用    IgnorePointer是 Flutter中的一个小部件，它用于包装其他小部件，并可以使这些小部件对用户输入（例如触摸事件）变得不可用。如：当页面处于登陆中时，登陆按钮点击无效。">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Lao Hei","sameAs":["https://github.com/laohei7","mailto"],"image":"rem-2.jpg"},"articleBody":"\n\n介绍IgnorePointer是 Flutter中的一个小部件，它用于包装其他小部件，并可以使这些小部件对用户输入（例如触摸事件）变得不可用。如：当页面处于登陆中时，登陆按钮点击无效。\n\n\n构造函数12345678910const IgnorePointer(&#123;  super.key,  this.ignoring = true,  @Deprecated(    &#x27;Use ExcludeSemantics or create a custom ignore pointer widget instead. &#x27;    &#x27;This feature was deprecated after v3.8.0-12.0.pre.&#x27;  )  this.ignoringSemantics,  super.child,&#125;);\n\n\nchild（Widget）：IgnorePointer包装的子小部件。只有这个子小部件会受到IgnorePointer的影响。\nignoring（bool）：一个布尔值，用于控制是否忽略用户输入。如果设置为true，则子小部件将不响应用户输入；如果设置为 false，则子小部件将正常响应用户输入。\n**ignoringSemantics**（bool）：一个布尔值，用于控制是否忽略语义信息。如果设置为true，则子小部件将不会报告语义信息，这在某些情况下可能会影响到辅助功能。\n\n简单使用123456789IgnorePointer(  ignoring: true, // true --&gt; Button的点击事件失效  child: ElevatedButton(    onPressed: () &#123;      // 按钮点击事件处理    &#125;,    child: Text(&#x27;Click Me&#x27;),  ),)\n\n进一步可以根据应用状态（StatefulWidget等更新状态）设置ignoring属性达到控制是否忽略用户输入。\n","dateCreated":"2023-10-08T23:35:16+08:00","dateModified":"2023-10-08T23:49:07+08:00","datePublished":"2023-10-08T23:35:16+08:00","description":"\n\n介绍IgnorePointer是 Flutter中的一个小部件，它用于包装其他小部件，并可以使这些小部件对用户输入（例如触摸事件）变得不可用。如：当页面处于登陆中时，登陆按钮点击无效。","headline":"【每日一个小组件】IgnorePointer","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://laohei7.github.io/2023/10/08/%E3%80%90%E6%AF%8F%E6%97%A5%E4%B8%80%E4%B8%AA%E5%B0%8F%E7%BB%84%E4%BB%B6%E3%80%91IgnorePointer/"},"publisher":{"@type":"Organization","name":"Lao Hei","sameAs":["https://github.com/laohei7","mailto"],"image":"rem-2.jpg","logo":{"@type":"ImageObject","url":"rem-2.jpg"}},"url":"https://laohei7.github.io/2023/10/08/%E3%80%90%E6%AF%8F%E6%97%A5%E4%B8%80%E4%B8%AA%E5%B0%8F%E7%BB%84%E4%BB%B6%E3%80%91IgnorePointer/","keywords":"flutter, dart, 每日一个小组件"}</script>
+    <meta name="description" content="介绍IgnorePointer是 Flutter中的一个小部件，它用于包装其他小部件，并可以使这些小部件对用户输入（例如触摸事件）变得不可用。如：当页面处于登陆中时，登陆按钮点击无效。">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="【每日一个小组件】IgnorePointer">
 <meta property="og:url" content="https://laohei7.github.io/2023/10/08/%E3%80%90%E6%AF%8F%E6%97%A5%E4%B8%80%E4%B8%AA%E5%B0%8F%E7%BB%84%E4%BB%B6%E3%80%91IgnorePointer/index.html">
 <meta property="og:site_name" content="Lao Hei Blog">
-<meta property="og:description" content="构造函数 简单使用    IgnorePointer是 Flutter中的一个小部件，它用于包装其他小部件，并可以使这些小部件对用户输入（例如触摸事件）变得不可用。如：当页面处于登陆中时，登陆按钮点击无效。">
+<meta property="og:description" content="介绍IgnorePointer是 Flutter中的一个小部件，它用于包装其他小部件，并可以使这些小部件对用户输入（例如触摸事件）变得不可用。如：当页面处于登陆中时，登陆按钮点击无效。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-10-08T15:35:16.000Z">
-<meta property="article:modified_time" content="2023-10-08T15:45:32.348Z">
+<meta property="article:modified_time" content="2023-10-08T15:49:07.001Z">
 <meta property="article:author" content="Lao Hei">
 <meta property="article:tag" content="flutter">
 <meta property="article:tag" content="dart">
@@ -274,15 +274,9 @@
     
     <div class="post-content markdown">
         <div class="main-content-wrap">
-            <h1 id="table-of-contents">目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">构造函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">简单使用</span></a></li></ol>
+            <h1 id="table-of-contents">目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">构造函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">简单使用</span></a></li></ol>
 
-<ul>
-<li><a href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0">构造函数</a></li>
-<li><a href="#%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8">简单使用</a></li>
-</ul>
-<!-- tocstop -->
-
-<p><code>IgnorePointer</code>是 <code>Flutter</code>中的一个小部件，它用于包装其他小部件，并可以使这些小部件对用户输入（例如触摸事件）变得不可用。如：当页面处于登陆中时，登陆按钮点击无效。</p>
+<h2><span id="介绍">介绍</span></h2><p><code>IgnorePointer</code>是 <code>Flutter</code>中的一个小部件，它用于包装其他小部件，并可以使这些小部件对用户输入（例如触摸事件）变得不可用。如：当页面处于登陆中时，登陆按钮点击无效。</p>
 <span id="more"></span>
 
 <h2><span id="构造函数">构造函数</span></h2><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> IgnorePointer(&#123;</span><br><span class="line">  <span class="keyword">super</span>.key,</span><br><span class="line">  <span class="keyword">this</span>.ignoring = <span class="keyword">true</span>,</span><br><span class="line">  <span class="meta">@Deprecated</span>(</span><br><span class="line">    <span class="string">&#x27;Use ExcludeSemantics or create a custom ignore pointer widget instead. &#x27;</span></span><br><span class="line">    <span class="string">&#x27;This feature was deprecated after v3.8.0-12.0.pre.&#x27;</span></span><br><span class="line">  )</span><br><span class="line">  <span class="keyword">this</span>.ignoringSemantics,</span><br><span class="line">  <span class="keyword">super</span>.child,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
@@ -612,15 +606,9 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"><!-- toc -->
+                        <div class="media-content hide-xs font-merryweather"><!--toc-->
 
-<ul>
-<li><a href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0">构造函数</a></li>
-<li><a href="#%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8">简单使用</a></li>
-</ul>
-<!-- tocstop -->
-
-<p><code>IgnorePointer</code>是 <code>Flutter</code>中的一个小部件，它用于包装其他小部件，并可以使这些小部件对用户输入（例如触摸事件）变得不可用。如：当页面处于登陆中时，登陆按钮点击无效。</p></div>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><code>IgnorePointer</code>是 <code>Flutter</code>中的一个小部件，它用于包装其他小部件，并可以使这些小部件对用户输入（例如触摸事件）变得不可用。如：当页面处于登陆中时，登陆按钮点击无效。</p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
