@@ -6,18 +6,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Lao Hei Blog">
-    <title>分类: flutter - Lao Hei Blog</title>
+    <title>【每日一个小组件】StatefulBuilder - Lao Hei Blog</title>
     <meta name="author" content="Lao Hei">
     
     
     
-    <script type="application/ld+json">{}</script>
-    <meta property="og:type" content="blog">
-<meta property="og:title" content="Lao Hei Blog">
-<meta property="og:url" content="https://laohei7.github.io/categories/flutter/index.html">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Lao Hei","sameAs":["https://github.com/laohei7","mailto"],"image":"rem-2.jpg"},"articleBody":"\n\n介绍StatefulBuilder是 Flutter 中的一个小部件，它允许你在不重建整个父小部件的情况下更新其内部状态。通常情况下，当需要在构建方法之外更新小部件的状态时，你会使用StatefulBuilder。\nStatefulBuilder接受一个回调函数作为其子部件，并将父小部件的BuildContext和一个StateSetter参数传递给该回调函数。StateSetter允许你在回调中更新小部件的状态。\n\n\n构造函数1234const StatefulBuilder(&#123;  super.key,  required this.builder,&#125;);\n\n\nbuilder：Widget Function(BuildContext context, StateSetter setState)\ncontext：这是构建上下文，用于构建小部件。通常，你可以将它传递给需要的小部件构造函数或方法中。\nsetState：这是一个函数，它允许你在回调函数内部更新与 StatefulBuilder 关联的小部件的状态。StateSetter 函数接受一个回调函数作为参数，该回调函数用于执行实际的状态更新操作。\n\n\n\n基本使用12345678910111213141516171819202122232425262728293031class MyApp extends StatefulWidget &#123;  const MyApp(&#123;super.key&#125;);  @override  State&lt;StatefulWidget&gt; createState() &#123;    return _MyAppState();  &#125;&#125;class _MyAppState extend State&lt;MyApp&gt;&#123;    int counter = 0;    late StateSetter stateSetter; // 用于执行实际的状态更新操作    @override  \tWidget build(BuildContext context) &#123;    \treturn Scaffold(        \tbody:StatefulBuilder(                builder: (context, setter) &#123;                \tstateSetter = setter;                    return Text(&quot;$counter&quot;);                &#125;,            ),            floatingActionButton:FloatingActionButton(                onPressed: () &#123;                     counter++;\t\t\t\t\tstateSetter(()&#123;&#125;); // 更新UI                &#125;,                child: const Text(&quot;ADD&quot;),            ),        );    \t&#125;&#125;\n\n","dateCreated":"2023-10-09T15:40:27+08:00","dateModified":"2023-10-09T15:57:16+08:00","datePublished":"2023-10-09T15:40:27+08:00","description":"\n\n介绍StatefulBuilder是 Flutter 中的一个小部件，它允许你在不重建整个父小部件的情况下更新其内部状态。通常情况下，当需要在构建方法之外更新小部件的状态时，你会使用StatefulBuilder。\nStatefulBuilder接受一个回调函数作为其子部件，并将父小部件的BuildContext和一个StateSetter参数传递给该回调函数。StateSetter允许你在回调中更新小部件的状态。","headline":"【每日一个小组件】StatefulBuilder","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://laohei7.github.io/2023/10/09/%E3%80%90%E6%AF%8F%E6%97%A5%E4%B8%80%E4%B8%AA%E5%B0%8F%E7%BB%84%E4%BB%B6%E3%80%91StatefulBuilder/"},"publisher":{"@type":"Organization","name":"Lao Hei","sameAs":["https://github.com/laohei7","mailto"],"image":"rem-2.jpg","logo":{"@type":"ImageObject","url":"rem-2.jpg"}},"url":"https://laohei7.github.io/2023/10/09/%E3%80%90%E6%AF%8F%E6%97%A5%E4%B8%80%E4%B8%AA%E5%B0%8F%E7%BB%84%E4%BB%B6%E3%80%91StatefulBuilder/","keywords":"Dart, Flutter, 每日一个小组件"}</script>
+    <meta name="description" content="介绍StatefulBuilder是 Flutter 中的一个小部件，它允许你在不重建整个父小部件的情况下更新其内部状态。通常情况下，当需要在构建方法之外更新小部件的状态时，你会使用StatefulBuilder。 StatefulBuilder接受一个回调函数作为其子部件，并将父小部件的BuildContext和一个StateSetter参数传递给该回调函数。StateSetter允许你在回">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="【每日一个小组件】StatefulBuilder">
+<meta property="og:url" content="https://laohei7.github.io/2023/10/09/%E3%80%90%E6%AF%8F%E6%97%A5%E4%B8%80%E4%B8%AA%E5%B0%8F%E7%BB%84%E4%BB%B6%E3%80%91StatefulBuilder/index.html">
 <meta property="og:site_name" content="Lao Hei Blog">
+<meta property="og:description" content="介绍StatefulBuilder是 Flutter 中的一个小部件，它允许你在不重建整个父小部件的情况下更新其内部状态。通常情况下，当需要在构建方法之外更新小部件的状态时，你会使用StatefulBuilder。 StatefulBuilder接受一个回调函数作为其子部件，并将父小部件的BuildContext和一个StateSetter参数传递给该回调函数。StateSetter允许你在回">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-10-09T07:40:27.000Z">
+<meta property="article:modified_time" content="2023-10-09T07:57:16.800Z">
 <meta property="article:author" content="Lao Hei">
+<meta property="article:tag" content="Dart">
+<meta property="article:tag" content="Flutter">
+<meta property="article:tag" content="每日一个小组件">
 <meta name="twitter:card" content="summary">
     
     
@@ -39,6 +46,8 @@
     
 
     
+        
+    
 </head>
 
     <body>
@@ -52,7 +61,7 @@
         
     
 
-<header id="header" data-behavior="1">
+<header id="header" data-behavior="4">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
         <a
@@ -85,7 +94,7 @@
         
     
 
-<nav id="sidebar" data-behavior="1">
+<nav id="sidebar" data-behavior="4">
     <div class="sidebar-container">
         
             <div class="sidebar-profile">
@@ -229,75 +238,136 @@
 </nav>
 
             
-            <div id="main" data-behavior="1"
+            <div id="main" data-behavior="4"
                  class="
                         hasCoverMetaIn
                         ">
                 
-    <section class="postShorten-group main-content-wrap">
+<article class="post">
     
     
-    <article class="postShorten postShorten--thumbnailimg-right">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2023/10/08/%E3%80%90%E6%AF%8F%E6%97%A5%E4%B8%80%E4%B8%AA%E5%B0%8F%E7%BB%84%E4%BB%B6%E3%80%91IgnorePointer/"
-                            aria-label=": 【每日一个小组件】IgnorePointer"
-                        >
-                            【每日一个小组件】IgnorePointer
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2023-10-08T23:35:16+08:00">
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            【每日一个小组件】StatefulBuilder
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2023-10-09T15:40:27+08:00">
 	
-		    2023 年 10 月 8 日
+		    2023 年 10 月 9 日
     	
     </time>
     
         <span>发布在 </span>
         
-    <a class="category-link" href="/categories/flutter/">flutter</a>
+    <a class="category-link" href="/categories/Flutter/">Flutter</a>
 
 
     
 </div>
 
-            </div>
-            
-                <div class="postShorten-excerpt">
-                    <!--toc-->
-
-<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><code>IgnorePointer</code>是 <code>Flutter</code>中的一个小部件，它用于包装其他小部件，并可以使这些小部件对用户输入（例如触摸事件）变得不可用。如：当页面处于登陆中时，登陆按钮点击无效。</p>
-                    
-                        <a
-                            href="/2023/10/08/%E3%80%90%E6%AF%8F%E6%97%A5%E4%B8%80%E4%B8%AA%E5%B0%8F%E7%BB%84%E4%BB%B6%E3%80%91IgnorePointer/"
-                            class="postShorten-excerpt_link link"
-                            aria-label=": 【每日一个小组件】IgnorePointer"
-                        >
-                            阅读全文
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-    </article>
     
-    <div class="pagination-bar">
-    <ul class="pagination">
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <h1 id="table-of-contents">目录</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">构造函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">基本使用</span></a></li></ol>
+
+<h2><span id="介绍">介绍</span></h2><p><code>StatefulBuilder</code>是 Flutter 中的一个小部件，它允许你在不重建整个父小部件的情况下更新其内部状态。通常情况下，当需要在构建方法之外更新小部件的状态时，你会使用<code>StatefulBuilder</code>。</p>
+<p><code>StatefulBuilder</code>接受一个回调函数作为其子部件，并将父小部件的<code>BuildContext</code>和一个<code>StateSetter</code>参数传递给该回调函数。<code>StateSetter</code>允许你在回调中更新小部件的状态。</p>
+<span id="more"></span>
+
+<h2><span id="构造函数">构造函数</span></h2><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> StatefulBuilder(&#123;</span><br><span class="line">  <span class="keyword">super</span>.key,</span><br><span class="line">  <span class="keyword">required</span> <span class="keyword">this</span>.builder,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>builder</code>：<code>Widget Function(BuildContext context, StateSetter setState)</code><ul>
+<li><code>context</code>：这是构建上下文，用于构建小部件。通常，你可以将它传递给需要的小部件构造函数或方法中。</li>
+<li><code>setState</code>：这是一个函数，它允许你在回调函数内部更新与 <code>StatefulBuilder</code> 关联的小部件的状态。<code>StateSetter</code> 函数接受一个回调函数作为参数，该回调函数用于执行实际的状态更新操作。</li>
+</ul>
+</li>
+</ul>
+<h2><span id="基本使用">基本使用</span></h2><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyApp</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> MyApp(&#123;<span class="keyword">super</span>.key&#125;);</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  State&lt;StatefulWidget&gt; createState() &#123;</span><br><span class="line">    <span class="keyword">return</span> _MyAppState();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_MyAppState</span> <span class="title">extend</span> <span class="title">State</span>&lt;<span class="title">MyApp</span>&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">int</span> counter = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">late</span> StateSetter stateSetter; <span class="comment">// 用于执行实际的状态更新操作</span></span><br><span class="line">    <span class="meta">@override</span></span><br><span class="line">  	Widget build(BuildContext context) &#123;</span><br><span class="line">    	<span class="keyword">return</span> Scaffold(</span><br><span class="line">        	body:StatefulBuilder(</span><br><span class="line">                builder: (context, setter) &#123;</span><br><span class="line">                	stateSetter = setter;</span><br><span class="line">                    <span class="keyword">return</span> Text(<span class="string">&quot;<span class="subst">$counter</span>&quot;</span>);</span><br><span class="line">                &#125;,</span><br><span class="line">            ),</span><br><span class="line">            floatingActionButton:FloatingActionButton(</span><br><span class="line">                onPressed: () &#123; </span><br><span class="line">                    counter++;</span><br><span class="line">					stateSetter(()&#123;&#125;); <span class="comment">// 更新UI</span></span><br><span class="line">                &#125;,</span><br><span class="line">                child: <span class="keyword">const</span> Text(<span class="string">&quot;ADD&quot;</span>),</span><br><span class="line">            ),</span><br><span class="line">        );  </span><br><span class="line">  	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+            
+
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">标签</span><br/>
+                
+    <a class="tag tag--primary tag--small t-none-link" href="/tags/Dart/" rel="tag">Dart</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/Flutter/" rel="tag">Flutter</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E4%B8%AA%E5%B0%8F%E7%BB%84%E4%BB%B6/" rel="tag">每日一个小组件</a>
+
+            </div>
         
         
-        <li class="pagination-number">第 1 页 共 1 页</li>
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a
+                        class="post-action-btn btn btn--disabled"
+                        aria-hidden="true"
+                    >
+                        
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2023/10/08/%E3%80%90%E6%AF%8F%E6%97%A5%E4%B8%80%E4%B8%AA%E5%B0%8F%E7%BB%84%E4%BB%B6%E3%80%91IgnorePointer/"
+                    data-tooltip="【每日一个小组件】IgnorePointer"
+                    aria-label="下一篇: 【每日一个小组件】IgnorePointer"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Diesen Beitrag teilen"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="目录">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
     </ul>
 </div>
 
-</section>
+
+        
+        
+            
+        
+    </div>
+</article>
 
 
 
@@ -308,6 +378,66 @@
 </footer>
 
             </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a
+                        class="post-action-btn btn btn--disabled"
+                        aria-hidden="true"
+                    >
+                        
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2023/10/08/%E3%80%90%E6%AF%8F%E6%97%A5%E4%B8%80%E4%B8%AA%E5%B0%8F%E7%BB%84%E4%BB%B6%E3%80%91IgnorePointer/"
+                    data-tooltip="【每日一个小组件】IgnorePointer"
+                    aria-label="下一篇: 【每日一个小组件】IgnorePointer"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Diesen Beitrag teilen"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="目录">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+
             
         </div>
         
@@ -486,6 +616,32 @@
                     <hr>
                 </div>
                 
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://laohei7.github.io/2023/10/09/%E3%80%90%E6%AF%8F%E6%97%A5%E4%B8%80%E4%B8%AA%E5%B0%8F%E7%BB%84%E4%BB%B6%E3%80%91StatefulBuilder/"
+                            aria-label=": 【每日一个小组件】StatefulBuilder"
+                        >
+                            <h3 class="media-heading">【每日一个小组件】StatefulBuilder</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2023年10月9日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><!--toc-->
+
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><code>StatefulBuilder</code>是 Flutter 中的一个小部件，它允许你在不重建整个父小部件的情况下更新其内部状态。通常情况下，当需要在构建方法之外更新小部件的状态时，你会使用<code>StatefulBuilder</code>。</p>
+<p><code>StatefulBuilder</code>接受一个回调函数作为其子部件，并将父小部件的<code>BuildContext</code>和一个<code>StateSetter</code>参数传递给该回调函数。<code>StateSetter</code>允许你在回调中更新小部件的状态。</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
             </div>
         </div>
         <div class="modal-footer">
@@ -493,7 +649,7 @@
                 data-message-zero="没有找到文章"
                 data-message-one="找到 1 篇文章"
                 data-message-other="找到 {n} 篇文章">
-                找到 4 篇文章
+                找到 5 篇文章
             </p>
         </div>
     </div>
@@ -508,6 +664,8 @@
 
 <!--SCRIPTS END-->
 
+
+    
 
 
 
