@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE buildprofiles SYSTEM "https://resources.jetbrains.com/writerside/1.0/build-profiles.dtd">
+<buildprofiles xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/build-profiles.xsd"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <footer>
+        <social type="bilibili" href="https://space.bilibili.com/291325546?spm_id_from=333.1007.0.0"/>
+        <copyright>2024 Lao Hei</copyright>
+    </footer>
+    <build-profile instance="hi">
+        <variables>
+            <header-logo>my-logo.png</header-logo>
+            <custom-favicons>my-logo.png</custom-favicons>
+        </variables>
+    </build-profile>
+
+
+</buildprofiles>
