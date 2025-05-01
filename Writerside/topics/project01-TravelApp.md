@@ -50,6 +50,16 @@ implementation("io.coil-kt.coil3:coil-compose:3.1.0")
 implementation("io.coil-kt.coil3:coil-network-okhttp:3.1.0")
 ```
 
+- rating bar
+
+```kotlin
+// project kts 
+maven { url = uri("https://jitpack.io") }
+
+// app kts
+implementation("com.github.a914-gowtham:compose-ratingbar:1.3.12")
+```
+
 ## Create Room Database
 
 ### Entities
