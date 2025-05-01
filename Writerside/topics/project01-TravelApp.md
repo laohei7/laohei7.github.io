@@ -1,5 +1,9 @@
 # project01-TravelApp
 
+## Preview
+
+![project01_travel_app_cover.jpg](project01_travel_app_cover.jpg)
+
 ## Settings Project
 
 - navigation
