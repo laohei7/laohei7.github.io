@@ -9,4 +9,9 @@
     <toc-element toc-title="Compose UI">
         <toc-element topic="project01-TravelApp.md"/>
     </toc-element>
+    <toc-element toc-title="博客">
+        <toc-element topic="如何同时关联Gitee和Github.md"/>
+        <toc-element topic="Kotlin中Object类线程安全.md"/>
+        <toc-element topic="MVI、MVVM、MVP-介绍与区别.md"/>
+    </toc-element>
 </instance-profile>
