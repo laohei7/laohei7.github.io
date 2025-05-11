@@ -8,6 +8,7 @@
 
     <toc-element toc-title="Compose UI">
         <toc-element topic="project01-TravelApp.md"/>
+        <toc-element topic="project02-RealEstateApp.md"/>
     </toc-element>
     <toc-element toc-title="博客">
         <toc-element topic="如何同时关联Gitee和Github.md"/>
