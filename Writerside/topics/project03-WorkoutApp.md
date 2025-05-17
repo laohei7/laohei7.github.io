@@ -65,9 +65,9 @@ data class Workout(
 object WorkoutDataProvider {
 
     fun getData(): List<Workout> = listOf(
-        Workout("Running", "Desc...", "pic_1", 160, "9 min", getLessions1()),
-        Workout("Stretching", "Desc...", "pic_2", 230, "85 min", getLessions2()),
-        Workout("Yoga", "Desc...", "pic_3", 180, "65 min", getLessions3())
+        Workout("Running", "Desc...", R.drawable.pic_1, 160, "9 min", getLessions1()),
+        Workout("Stretching", "Desc...", R.drawable.pic_2, 230, "85 min", getLessions2()),
+        Workout("Yoga", "Desc...", R.drawable.pic_3, 180, "65 min", getLessions3())
     )
 
     fun getLessions1() = listOf(
