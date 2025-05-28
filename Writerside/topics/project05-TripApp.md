@@ -6,6 +6,12 @@
 
 ## Settings Project
 
+- resources
+
+[Github](https://github.com/laohei7/compose_ui/tree/main/project05_trip_app)
+
+[压缩包（访问密码：5372）](https://url93.ctfile.com/f/48492093-1509129577-7e4f53?p=5372)
+
 - navigation
 
 ```kotlin
