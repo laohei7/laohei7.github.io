@@ -6,6 +6,12 @@
 
 ## Settings Project
 
+- resources
+
+[Github](https://github.com/laohei7/compose_ui/tree/main/project04_online_shop_app)
+
+[压缩包（访问密码：5372）](https://url93.ctfile.com/f/48492093-1510479283-d948cb?p=5372)
+
 - strings
 
 ```XML
