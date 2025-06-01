@@ -6,6 +6,9 @@
                   name="Laohei Blog"
                   start-page="project01-TravelApp.md">
 
+    <toc-element toc-title="Composables">
+        <toc-element topic="绘制边框的几种方式.md"/>
+    </toc-element>
     <toc-element toc-title="Compose UI">
         <toc-element topic="project01-TravelApp.md"/>
         <toc-element topic="project02-RealEstateApp.md"/>
