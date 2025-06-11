@@ -54,6 +54,12 @@ maven { url = uri("https://jitpack.io") }
 implementation("com.github.lincollincol:compose-audiowaveform:1.1.1")
 ```
 
+- icon
+
+```kotlin
+implementation("androidx.compose.material:material-icons-extended:1.7.8")
+```
+
 ## Model
 
 ### Song
