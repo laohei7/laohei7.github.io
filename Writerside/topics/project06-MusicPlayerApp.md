@@ -41,7 +41,7 @@ implementation("io.coil-kt.coil3:coil-compose:3.1.0")
 - media3
 
 ```kotlin
-implementation("com.google.android.exoplayer:exoplayer:2.19.0")
+implementation("androidx.media3:media3-exoplayer:1.7.1")
 ```
 
 - audiowaveform
@@ -58,6 +58,12 @@ implementation("com.github.lincollincol:compose-audiowaveform:1.1.1")
 
 ```kotlin
 implementation("androidx.compose.material:material-icons-extended:1.7.8")
+```
+
+- amplituda
+
+```kotlin
+implementation("com.github.lincollincol:amplituda:2.2.2")
 ```
 
 ## Model
