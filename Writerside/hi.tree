@@ -16,6 +16,7 @@
         <toc-element topic="Project04-OnlineShopApp.md"/>
         <toc-element topic="project05-TripApp.md"/>
         <toc-element topic="project06-MusicPlayerApp.md"/>
+        <toc-element topic="project07-CryptoApp.md"/>
     </toc-element>
     <toc-element toc-title="博客">
         <toc-element topic="如何同时关联Gitee和Github.md"/>
