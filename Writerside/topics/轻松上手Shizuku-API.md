@@ -54,4 +54,4 @@ compileOnly(project(":demo-hidden-api-stub"))
         android:permission="android.permission.INTERACT_ACROSS_USERS_FULL"/>
 ```
 
-[视频教程]()
+[视频教程](https://www.bilibili.com/video/BV11mNzzHEXr/)
