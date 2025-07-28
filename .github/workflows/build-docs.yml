@@ -81,6 +81,7 @@ jobs:
       - name: Push built files to branch
         run: |
           set -e
+  
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
   
@@ -89,14 +90,21 @@ jobs:
           BUILD_DIR="dir"
           TEMP_DIR="gh-pages-temp"
   
-          git clone --depth 1 --branch $BRANCH "$REPO_URL" $TEMP_DIR || {
-            echo "Branch $BRANCH does not exist, creating it..."
-            git clone --depth 1 "$REPO_URL" $TEMP_DIR
-            cd $TEMP_DIR
-            git checkout --orphan $BRANCH
-          }
+          # Clone without branch first
+          git clone "$REPO_URL" $TEMP_DIR
   
           cd $TEMP_DIR
+  
+          # Create orphan branch if not exists
+          if ! git show-ref --quiet refs/heads/$BRANCH; then
+            git checkout --orphan $BRANCH
+            git rm -rf .
+          else
+            git checkout $BRANCH
+            git pull origin $BRANCH
+          fi
+  
+          # Clean and copy build files
           rm -rf *
           cp -r ../$BUILD_DIR/* .
   
