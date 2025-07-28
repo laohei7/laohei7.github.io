@@ -1,0 +1,220 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-07-28T13:50:36.900374935"><title>Project04-OnlineShopApp | Laohei Blog</title><script type="application/json" id="virtual-toc-data">[{"id":"preview","level":0,"title":"Preview","anchor":"#preview"},{"id":"settings-project","level":0,"title":"Settings Project","anchor":"#settings-project"},{"id":"create-room-database","level":0,"title":"Create Room Database","anchor":"#create-room-database"},{"id":"utils","level":0,"title":"Utils","anchor":"#utils"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b518/app.css" rel="stylesheet"><link rel="icon" type="image/png" sizes="16x16" href="images/my-logo.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Project04-OnlineShopApp | Laohei Blog"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Laohei Blog Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/project04-onlineshopapp.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Project04-OnlineShopApp | Laohei Blog"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/project04-onlineshopapp.html#webpage",
+    "url": "writerside-documentation/project04-onlineshopapp.html",
+    "name": "Project04-OnlineShopApp | Laohei Blog",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Laohei Blog Help"
+}</script><!-- End Schema.org --></head><body data-id="Project04-OnlineShopApp" data-main-title="Project04-OnlineShopApp" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Compose UI"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Laohei Blog  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Project04-OnlineShopApp" id="Project04-OnlineShopApp.md">Project04-OnlineShopApp</h1><section class="chapter"><h2 id="preview" data-toc="preview">Preview</h2><figure id="-l6pedj_7"><img alt="project03_cover.jpg" src="images/project04_cover.jpg" title="project03_cover.jpg" width="1280" height="720"></figure></section><section class="chapter"><h2 id="settings-project" data-toc="settings-project">Settings Project</h2><ul class="list _bullet" id="-l6pedj_8"><li class="list__item" id="-l6pedj_23"><p>resources</p></li></ul><p id="-l6pedj_9"><a href="https://github.com/laohei7/compose_ui/tree/main/project04_online_shop_app" id="-l6pedj_24" data-external="true" rel="noopener noreferrer">Github</a></p><p id="-l6pedj_10"><a href="https://url93.ctfile.com/f/48492093-1510479283-d948cb?p=5372" id="-l6pedj_25" data-external="true" rel="noopener noreferrer">压缩包（访问密码：5372）</a></p><ul class="list _bullet" id="-l6pedj_11"><li class="list__item" id="-l6pedj_26"><p>strings</p></li></ul><div class="code-block" data-lang="markup">
+&lt;resources&gt;
+    &lt;string name=&quot;str_welcome_back&quot;&gt;Welcome Back&lt;/string&gt;
+    &lt;string name=&quot;str_user&quot;&gt;Tina Anderson&lt;/string&gt;
+    &lt;string name=&quot;str_intro&quot;&gt;Skincare made\nsimple,\nbeautiful,\nand effective&lt;/string&gt;
+    &lt;string name=&quot;str_start&quot;&gt;Let's Get Started&lt;/string&gt;
+    &lt;string name=&quot;str_subtotal&quot;&gt;Subtotal&lt;/string&gt;
+    &lt;string name=&quot;str_free_delivery&quot;&gt;Free Delivery&lt;/string&gt;
+    &lt;string name=&quot;str_total_tax&quot;&gt;Total Tax&lt;/string&gt;
+    &lt;string name=&quot;str_total&quot;&gt;Total&lt;/string&gt;
+    &lt;string name=&quot;str_check_out&quot;&gt;Check Out&lt;/string&gt;
+    &lt;string name=&quot;str_product&quot;&gt;Product&lt;/string&gt;
+    &lt;string name=&quot;str_popular_product&quot;&gt;Popular Product&lt;/string&gt;
+    &lt;string name=&quot;str_see_all&quot;&gt;See All&lt;/string&gt;
+&lt;/resources&gt;
+</div><ul class="list _bullet" id="-l6pedj_13"><li class="list__item" id="-l6pedj_27"><p>navigation</p></li></ul><div class="code-block" data-lang="kotlin">
+// projecct kts
+kotlin(&quot;plugin.serialization&quot;) version &quot;2.1.0&quot;
+
+// app kts
+kotlin(&quot;plugin.serialization&quot;)
+implementation(&quot;androidx.navigation:navigation-compose:2.8.9&quot;)
+implementation(&quot;org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0&quot;)
+</div><ul class="list _bullet" id="-l6pedj_15"><li class="list__item" id="-l6pedj_28"><p>room</p></li></ul><div class="code-block" data-lang="kotlin">
+// project kts
+id(&quot;com.google.devtools.ksp&quot;) version &quot;2.1.10-1.0.31&quot; apply false
+id(&quot;androidx.room&quot;) version &quot;2.7.1&quot; apply false
+
+// app kts
+id(&quot;com.google.devtools.ksp&quot;)
+id(&quot;androidx.room&quot;)
+
+implementation(&quot;androidx.room:room-runtime:2.7.1&quot;)
+implementation(&quot;androidx.room:room-ktx:2.7.1&quot;)
+implementation(&quot;androidx.room:room-compiler:2.7.1&quot;)
+
+// app kts android { ... }
+room {
+    schemaDirectory(&quot;$projectDir/schemas&quot;)
+}
+</div><ul class="list _bullet" id="-l6pedj_17"><li class="list__item" id="-l6pedj_29"><p>koin</p></li></ul><div class="code-block" data-lang="kotlin">
+implementation(&quot;io.insert-koin:koin-android:4.1.0-Beta5&quot;)
+implementation(&quot;io.insert-koin:koin-androidx-compose:4.1.0-Beta5&quot;)
+implementation(&quot;io.insert-koin:koin-androidx-compose-navigation:4.1.0-Beta5&quot;)
+</div><ul class="list _bullet" id="-l6pedj_19"><li class="list__item" id="-l6pedj_30"><p>coil</p></li></ul><div class="code-block" data-lang="kotlin">
+implementation(&quot;io.coil-kt.coil3:coil-compose:3.1.0&quot;)
+implementation(&quot;io.coil-kt.coil3:coil-network-okhttp:3.1.0&quot;)
+</div><ul class="list _bullet" id="-l6pedj_21"><li class="list__item" id="-l6pedj_31"><p>palette</p></li></ul><div class="code-block" data-lang="kotlin">
+implementation(&quot;androidx.palette:palette:1.0.0&quot;)
+</div></section><section class="chapter"><h2 id="create-room-database" data-toc="create-room-database">Create Room Database</h2><section class="chapter"><h3 id="entity" data-toc="entity">Entity</h3><ul class="list _bullet" id="-l6pedj_36"><li class="list__item" id="-l6pedj_44"><p>BannerEntity</p></li></ul><div class="code-block" data-lang="kotlin">
+@Entity(tableName = &quot;banner&quot;)
+data class BannerEntity(
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val url: String
+)
+</div><ul class="list _bullet" id="-l6pedj_38"><li class="list__item" id="-l6pedj_45"><p>CategoryEntity</p></li></ul><div class="code-block" data-lang="kotlin">
+@Entity(tableName = &quot;category&quot;)
+data class CategoryEntity(
+    @PrimaryKey val id: Int,
+    val title: String
+)
+</div><ul class="list _bullet" id="-l6pedj_40"><li class="list__item" id="-l6pedj_46"><p>ItemEntity</p></li></ul><div class="code-block" data-lang="kotlin">
+@Entity(tableName = &quot;item&quot;)
+data class ItemEntity(
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val title: String,
+    val description: String,
+    val price: Int,
+    val rating: Double,
+    val showRecommended: Boolean,
+    val categoryId: Int
+)
+</div><ul class="list _bullet" id="-l6pedj_42"><li class="list__item" id="-l6pedj_47"><p>PicUrlEntity</p></li></ul><div class="code-block" data-lang="kotlin">
+@Entity(tableName = &quot;pic_url&quot;)
+data class PicUrlEntity(
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val itemId: Int,
+    val url: String
+)
+</div></section><section class="chapter"><h3 id="relation" data-toc="relation">Relation</h3><ul class="list _bullet" id="-l6pedj_48"><li class="list__item" id="-l6pedj_54"><p>ItemWithPics</p></li></ul><div class="code-block" data-lang="kotlin">
+data class ItemWithPics(
+    @Embedded val item: ItemEntity,
+    @Relation(
+        parentColumn = &quot;id&quot;,
+        entityColumn = &quot;itemId&quot;
+    )
+    val pics: List&lt;PicUrlEntity&gt;
+)
+</div><ul class="list _bullet" id="-l6pedj_50"><li class="list__item" id="-l6pedj_55"><p>ItemWithCategory</p></li></ul><div class="code-block" data-lang="kotlin">
+data class ItemWithCategory(
+    @Embedded val item: ItemEntity,
+    @Relation(
+        parentColumn = &quot;categoryId&quot;,
+        entityColumn = &quot;id&quot;
+    )
+    val category: CategoryEntity
+)
+</div><ul class="list _bullet" id="-l6pedj_52"><li class="list__item" id="-l6pedj_56"><p>ItemFull</p></li></ul><div class="code-block" data-lang="kotlin">
+data class ItemFull(
+    @Embedded val item: ItemEntity,
+    @Relation(
+        parentColumn = &quot;id&quot;,
+        entityColumn = &quot;itemId&quot;
+    )
+    val pics: List&lt;PicUrlEntity&gt;,
+
+    @Relation(
+        parentColumn = &quot;categoryId&quot;,
+        entityColumn = &quot;id&quot;
+    )
+    val category: CategoryEntity
+)
+</div></section><section class="chapter"><h3 id="dao" data-toc="dao">Dao</h3><ul class="list _bullet" id="-l6pedj_57"><li class="list__item" id="-l6pedj_65"><p>BannerDao</p></li></ul><div class="code-block" data-lang="kotlin">
+@Dao
+interface BannerDao {
+    @Insert
+    suspend fun insertAll(banners: List&lt;BannerEntity&gt;)
+
+    @Query(&quot;SELECT * FROM banner&quot;)
+    suspend fun getAll(): List&lt;BannerEntity&gt;
+}
+</div><ul class="list _bullet" id="-l6pedj_59"><li class="list__item" id="-l6pedj_66"><p>CategoryDao</p></li></ul><div class="code-block" data-lang="kotlin">
+@Dao
+interface CategoryDao {
+    @Insert
+    suspend fun insertAll(categories: List&lt;CategoryEntity&gt;)
+
+    @Query(&quot;SELECT * FROM category&quot;)
+    suspend fun getAll(): List&lt;CategoryEntity&gt;
+}
+</div><ul class="list _bullet" id="-l6pedj_61"><li class="list__item" id="-l6pedj_67"><p>ItemDao</p></li></ul><div class="code-block" data-lang="kotlin">
+@Dao
+interface ItemDao {
+    @Insert
+    suspend fun insertAll(items: List&lt;ItemEntity&gt;)
+
+    @Transaction
+    @Query(&quot;SELECT * FROM item&quot;)
+    suspend fun getItemsWithPics(): List&lt;ItemWithPics&gt;
+
+    @Transaction
+    @Query(&quot;SELECT * FROM item WHERE showRecommended = 1&quot;)
+    suspend fun getRecommendedItems(): List&lt;ItemWithPics&gt;
+
+    @Transaction
+    @Query(&quot;SELECT * FROM item WHERE categoryId = :categoryId&quot;)
+    suspend fun getItemsByCategory(categoryId: Int): List&lt;ItemWithPics&gt;
+
+    @Transaction
+    @Query(&quot;SELECT * FROM item&quot;)
+    suspend fun getFullItemData(): List&lt;ItemFull&gt;
+}
+</div><ul class="list _bullet" id="-l6pedj_63"><li class="list__item" id="-l6pedj_68"><p>PicUrlDao</p></li></ul><div class="code-block" data-lang="kotlin">
+@Dao
+interface PicUrlDao {
+    @Insert
+    suspend fun insertAll(picUrls: List&lt;PicUrlEntity&gt;)
+
+    @Query(&quot;SELECT * FROM pic_url WHERE itemId = :itemId&quot;)
+    suspend fun getPicsByItemId(itemId: Int): List&lt;PicUrlEntity&gt;
+}
+</div></section><section class="chapter"><h3 id="database" data-toc="database">database</h3><div class="code-block" data-lang="kotlin">
+@Database(entities = [
+    BannerEntity::class,
+    CategoryEntity::class,
+    ItemEntity::class,
+    PicUrlEntity::class
+], version = 1)
+abstract class AppDatabase : RoomDatabase() {
+    abstract fun bannerDao(): BannerDao
+    abstract fun categoryDao(): CategoryDao
+    abstract fun itemDao(): ItemDao
+    abstract fun picUrlDao(): PicUrlDao
+
+    companion object {
+        @Volatile
+        private var INSTANCE: AppDatabase? = null
+
+        private const val DATABASE_NAME = &quot;database.db&quot;
+
+        fun getInstance(context: Context): AppDatabase {
+            return INSTANCE ?: synchronized(this) {
+                INSTANCE ?: buildDatabase(context).also { INSTANCE = it }
+            }
+        }
+
+        private fun buildDatabase(context: Context): AppDatabase {
+            return Room.databaseBuilder(
+                context.applicationContext,
+                AppDatabase::class.java,
+                DATABASE_NAME
+            ).createFromAsset(DATABASE_NAME)
+                .build()
+        }
+    }
+}
+</div></section></section><section class="chapter"><h2 id="utils" data-toc="utils">Utils</h2><section class="chapter"><h3 id="bitmaputil" data-toc="bitmaputil">BitmapUtil</h3><div class="code-block" data-lang="kotlin">
+fun Bitmap.toNonHardwareBitmap(): Bitmap {
+    return if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.O &amp;&amp; this.config == Bitmap.Config.HARDWARE) {
+        this.copy(Bitmap.Config.ARGB_8888, true)
+    } else {
+        this
+    }
+}
+</div></section></section><div class="last-modified">Last modified: 31 May 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="project03-workoutapp.html" class="navigation-links__prev">project03-WorkoutApp</a><a href="project05-tripapp.html" class="navigation-links__next">project05-TripApp</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b518/app.js"></script></body></html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-07-28T13:50:37.085478501"><title>project09-QuizApp | Laohei Blog</title><script type="application/json" id="virtual-toc-data">[{"id":"preview","level":0,"title":"Preview","anchor":"#preview"},{"id":"settings-project","level":0,"title":"Settings Project","anchor":"#settings-project"},{"id":"model","level":0,"title":"Model","anchor":"#model"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b518/app.css" rel="stylesheet"><link rel="icon" type="image/png" sizes="16x16" href="images/my-logo.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="project09-QuizApp | Laohei Blog"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Laohei Blog Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/project10-quizapp.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="project09-QuizApp | Laohei Blog"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/project10-quizapp.html#webpage",
+    "url": "writerside-documentation/project10-quizapp.html",
+    "name": "project09-QuizApp | Laohei Blog",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Laohei Blog Help"
+}</script><!-- End Schema.org --></head><body data-id="project10-QuizApp" data-main-title="project09-QuizApp" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Compose UI"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Laohei Blog  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="project10-QuizApp" id="project10-QuizApp.md">project09-QuizApp</h1><section class="chapter"><h2 id="preview" data-toc="preview">Preview</h2><figure id="k17fpm_6"><img alt="project02_cover.jpg" src="images/project09_cover.jpg" title="project02_cover.jpg" width="1280" height="720"></figure></section><section class="chapter"><h2 id="settings-project" data-toc="settings-project">Settings Project</h2><ul class="list _bullet" id="k17fpm_7"><li class="list__item" id="k17fpm_13"><p>resources</p></li></ul><p id="k17fpm_8"><a href="https://github.com/laohei7/compose_ui/tree/main/project09-quiz_app" id="k17fpm_14" data-external="true" rel="noopener noreferrer">Github</a></p><p id="k17fpm_9"><a href="https://url93.ctfile.com/f/48492093-1543886711-3fd2d1?p=5372" id="k17fpm_15" data-external="true" rel="noopener noreferrer">压缩包（访问密码：5372）</a></p><ul class="list _bullet" id="k17fpm_10"><li class="list__item" id="k17fpm_16"><p>dependencies</p></li></ul><div class="code-block" data-lang="toml">
+[versions]
+koinCompose = &quot;4.1.0&quot;
+kotlin = &quot;2.2.0&quot;
+kotlinx-serialization = &quot;1.9.0&quot;
+androidx-navigation = &quot;2.9.0-beta03&quot;
+
+[libraries]
+koin-compose-viewmodel = { module = &quot;io.insert-koin:koin-compose-viewmodel&quot;, version.ref = &quot;koinCompose&quot; }
+koin-compose = { module = &quot;io.insert-koin:koin-compose&quot;, version.ref = &quot;koinCompose&quot; }
+koin-core = { module = &quot;io.insert-koin:koin-core&quot;, version.ref = &quot;koinCompose&quot; }
+koin-compose-viewmodel-navigation = { module = &quot;io.insert-koin:koin-compose-viewmodel-navigation&quot;, version.ref = &quot;koinCompose&quot; }
+androidx-navigation-compose = { module = &quot;org.jetbrains.androidx.navigation:navigation-compose&quot;, version.ref = &quot;androidx-navigation&quot; }
+kotlinx-serialization-json = { module = &quot;org.jetbrains.kotlinx:kotlinx-serialization-json&quot;, version.ref = &quot;kotlinx-serialization&quot; }
+
+[plugins]
+kotlinx-serialization = { id = &quot;org.jetbrains.kotlin.plugin.serialization&quot;, version.ref = &quot;kotlin&quot; }
+
+[bundles]
+common-koin = [
+    &quot;koin-compose&quot;, &quot;koin-compose-viewmodel&quot;, &quot;koin-compose-viewmodel-navigation&quot;, &quot;koin-core&quot;
+]
+</div><div class="code-block" data-lang="kotlin">
+// project build.gradle.kts
+plugins {
+    alias(libs.plugins.kotlinx.serialization) apply false
+}
+
+
+// composeApp build.gradle.kts
+plugins {
+    alias(libs.plugins.kotlinx.serialization)
+}
+
+sourceSets {
+    
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.bundles.common.koin)
+}
+</div></section><section class="chapter"><h2 id="model" data-toc="model">Model</h2><section class="chapter"><h3 id="questionmodel" data-toc="questionmodel">QuestionModel</h3><div class="code-block" data-lang="kotlin">
+data class QuestionModel(
+    val id:Int,
+    val question:String?,
+    val options:List&lt;String?&gt;,
+    val correctAnswer: String?,
+    val score:Int,
+    val pic: DrawableResource,
+    val selectAnswer: String?
+)
+
+val questionList = listOf(
+    QuestionModel(
+        1,
+        &quot;Which planet is the largest planet in the solar system?&quot;,
+        &quot;Earth&quot;,
+        &quot;Mars&quot;,
+        &quot;Neptune&quot;,
+        &quot;Jupiter&quot;,
+        &quot;d&quot;,
+        5,
+        Res.drawable.q_1,
+        null
+    ),
+    QuestionModel(
+        2,
+        &quot;Which country is the largest country in the world by land area?&quot;,
+        &quot;Russia&quot;,
+        &quot;Canada&quot;,
+        &quot;United States&quot;,
+        &quot;China&quot;,
+        &quot;a&quot;,
+        5,
+        Res.drawable.q_2,
+        null
+    ),
+    QuestionModel(
+        3,
+        &quot;Which of the following substances is used as an anti-cancer medication?&quot;,
+        &quot;Cheese&quot;,
+        &quot;Lemon juice&quot;,
+        &quot;Cannabis&quot;,
+        &quot;Paspalum&quot;,
+        &quot;c&quot;,
+        5,
+        Res.drawable.q_3,
+        null
+    ),
+    QuestionModel(
+        4,
+        &quot;Which moon has an atmosphere?&quot;,
+        &quot;Luna&quot;,
+        &quot;Phobos&quot;,
+        &quot;Venus' moon&quot;,
+        &quot;None of the above&quot;,
+        &quot;d&quot;,
+        5,
+        Res.drawable.q_4,
+        null
+    ),
+    QuestionModel(
+        5,
+        &quot;Which symbol represents the element with atomic number 6?&quot;,
+        &quot;O&quot;,
+        &quot;H&quot;,
+        &quot;C&quot;,
+        &quot;N&quot;,
+        &quot;c&quot;,
+        5,
+        Res.drawable.q_5,
+        null
+    ),
+    QuestionModel(
+        6,
+        &quot;Who is credited with inventing theater as we know it?&quot;,
+        &quot;Shakespeare&quot;,
+        &quot;Arthur Miller&quot;,
+        &quot;Ashkouri&quot;,
+        &quot;Ancient Greeks&quot;,
+        &quot;d&quot;,
+        5,
+        Res.drawable.q_6,
+        null
+    ),
+    QuestionModel(
+        7,
+        &quot;Which ocean is the largest?&quot;,
+        &quot;Pacific&quot;,
+        &quot;Atlantic&quot;,
+        &quot;Indian&quot;,
+        &quot;Arctic&quot;,
+        &quot;a&quot;,
+        5,
+        Res.drawable.q_7,
+        null
+    ),
+    QuestionModel(
+        8,
+        &quot;Which religions are most practiced?&quot;,
+        &quot;Islam, Christianity, Judaism&quot;,
+        &quot;Buddhism, Hinduism, Sikhism&quot;,
+        &quot;Zoroastrianism, Brahmanism&quot;,
+        &quot;Taoism, Shintoism&quot;,
+        &quot;a&quot;,
+        5,
+        Res.drawable.q_8,
+        null
+    ),
+    QuestionModel(
+        9,
+        &quot;Which continent has the most independent countries?&quot;,
+        &quot;Asia&quot;,
+        &quot;Europe&quot;,
+        &quot;Africa&quot;,
+        &quot;Americas&quot;,
+        &quot;c&quot;,
+        5,
+        Res.drawable.q_9,
+        null
+    ),
+    QuestionModel(
+        10,
+        &quot;Which ocean has the greatest average depth?&quot;,
+        &quot;Pacific&quot;,
+        &quot;Atlantic&quot;,
+        &quot;Indian&quot;,
+        &quot;Southern&quot;,
+        &quot;d&quot;,
+        5,
+        Res.drawable.q_10,
+        null
+    )
+)
+</div></section><section class="chapter"><h3 id="usermodel" data-toc="usermodel">UserModel</h3><div class="code-block" data-lang="kotlin">
+data class UserModel(
+    val id: Int,
+    val name: String,
+    val pic: DrawableResource,
+    val score: Int
+)
+
+val userList = listOf(
+    UserModel(1,&quot;User 1&quot;,Res.drawable.person1,300),
+    UserModel(2,&quot;User 2&quot;,Res.drawable.person2,200),
+    UserModel(3,&quot;User 3&quot;,Res.drawable.person2,100),
+)
+</div></section></section><div class="last-modified">Last modified: 26 July 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="project08-foodapp.html" class="navigation-links__prev">project08-FoodApp</a><a href="绘制边框的几种方式.html" class="navigation-links__next">绘制边框的几种方式</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b518/app.js"></script></body></html>

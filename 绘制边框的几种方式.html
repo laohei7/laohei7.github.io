@@ -1,0 +1,258 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-07-28T13:50:37.13928373"><title>绘制边框的几种方式 | Laohei Blog</title><script type="application/json" id="virtual-toc-data">[{"id":"xmxc5h_4","level":0,"title":"正常","anchor":"#xmxc5h_4"},{"id":"xmxc5h_5","level":0,"title":"渐变色","anchor":"#xmxc5h_5"},{"id":"xmxc5h_6","level":0,"title":"正常（动画）","anchor":"#xmxc5h_6"},{"id":"xmxc5h_7","level":0,"title":"渐变色+动画","anchor":"#xmxc5h_7"},{"id":"xmxc5h_8","level":0,"title":"正常+动画（进阶）","anchor":"#xmxc5h_8"},{"id":"xmxc5h_9","level":0,"title":"渐变色+动画（进阶）","anchor":"#xmxc5h_9"},{"id":"xmxc5h_10","level":0,"title":"虚线（进阶）","anchor":"#xmxc5h_10"},{"id":"xmxc5h_11","level":0,"title":"形状（进阶）","anchor":"#xmxc5h_11"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b518/app.css" rel="stylesheet"><link rel="icon" type="image/png" sizes="16x16" href="images/my-logo.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="绘制边框的几种方式 | Laohei Blog"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Laohei Blog Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/绘制边框的几种方式.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="绘制边框的几种方式 | Laohei Blog"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/绘制边框的几种方式.html#webpage",
+    "url": "writerside-documentation/绘制边框的几种方式.html",
+    "name": "绘制边框的几种方式 | Laohei Blog",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Laohei Blog Help"
+}</script><!-- End Schema.org --></head><body data-id="绘制边框的几种方式" data-main-title="绘制边框的几种方式" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Jetpack Compose"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Laohei Blog  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="绘制边框的几种方式" id="绘制边框的几种方式.md">绘制边框的几种方式</h1><figure data-theme="light" id="xmxc5h_3" width="784"><img alt="border.gif" class="js-gif article__bordered-element" data-gif-src="images/border.gif" width="784" style="width: 784px;"></figure><section class="chapter"><h2 id="xmxc5h_4" data-toc="xmxc5h_4">正常</h2><p id="xmxc5h_12">使用 <code class="code" id="xmxc5h_14">Modifier</code> 的 <code class="code" id="xmxc5h_15">border</code> API</p><div class="code-block" data-lang="kotlin">
+Box(
+    modifier = Modifier
+        .size(60.dp)
+        .background(MaterialTheme.colorScheme.background)
+        .border(
+            2.dp,
+            Color.Red
+        ),
+    contentAlignment = Alignment.Center
+) {
+    Text(
+        &quot;正常&quot;, style = MaterialTheme.typography.labelSmall,
+        textAlign = TextAlign.Center
+    )
+}
+</div></section><section class="chapter"><h2 id="xmxc5h_5" data-toc="xmxc5h_5">渐变色</h2><p id="xmxc5h_16">使用 <code class="code" id="xmxc5h_18">Modifier</code> 的 <code class="code" id="xmxc5h_19">border</code> API + <code class="code" id="xmxc5h_20">Brush</code></p><div class="code-block" data-lang="kotlin">
+Box(
+    modifier = Modifier
+        .size(60.dp)
+        .background(MaterialTheme.colorScheme.background)
+        .border(
+            width = 2.dp,
+            brush =
+                Brush.linearGradient(listOf(Color.Red, Color.Blue, Color.Green)),
+            shape = RoundedCornerShape(0.dp)
+        ),
+    contentAlignment = Alignment.Center
+) {
+    Text(
+        &quot;渐变色&quot;, style = MaterialTheme.typography.labelSmall,
+        textAlign = TextAlign.Center
+    )
+}
+</div></section><section class="chapter"><h2 id="xmxc5h_6" data-toc="xmxc5h_6">正常（动画）</h2><p id="xmxc5h_21">使用 <code class="code" id="xmxc5h_23">Modifier</code> 的 <code class="code" id="xmxc5h_24">border</code> API + <code class="code" id="xmxc5h_25">InfiniteTransition</code> + <code class="code" id="xmxc5h_26">animateColor</code></p><div class="code-block" data-lang="kotlin">
+val infiniteTransition = rememberInfiniteTransition()
+val animatedColor by infiniteTransition.animateColor(
+    initialValue = Color.Red,
+    targetValue = Color.Blue,
+    animationSpec = infiniteRepeatable(
+        animation = tween(2000),
+        repeatMode = RepeatMode.Reverse
+    )
+)
+Box(
+    modifier = Modifier
+        .size(60.dp)
+        .background(MaterialTheme.colorScheme.background)
+        .border(
+            width = 2.dp,
+            color = animatedColor
+        ),
+    contentAlignment = Alignment.Center
+) {
+    Text(
+        &quot;正常+动画&quot;, style = MaterialTheme.typography.labelSmall,
+        textAlign = TextAlign.Center
+    )
+}
+</div></section><section class="chapter"><h2 id="xmxc5h_7" data-toc="xmxc5h_7">渐变色+动画</h2><p id="xmxc5h_27">使用 <code class="code" id="xmxc5h_29">Modifier</code> 的 <code class="code" id="xmxc5h_30">border</code> API + <code class="code" id="xmxc5h_31">InfiniteTransition</code> + <code class="code" id="xmxc5h_32">animateFloat</code></p><div class="code-block" data-lang="kotlin">
+val infiniteTransition = rememberInfiniteTransition()
+val animatedOffset by infiniteTransition.animateFloat(
+    initialValue = 0f,
+    targetValue = 1000f,
+    animationSpec = infiniteRepeatable(
+        animation = tween(2000),
+        repeatMode = RepeatMode.Restart
+    )
+)
+Box(
+    modifier = Modifier
+        .size(60.dp)
+        .background(MaterialTheme.colorScheme.background)
+        .border(
+            width = 2.dp,
+            brush =
+                Brush.linearGradient(
+                    listOf(Color.Red, Color.Blue, Color.Green),
+                    start = Offset(0f, 0f),
+                    end = Offset(animatedOffset, animatedOffset)
+                ),
+            shape = RoundedCornerShape(0.dp)
+        ),
+    contentAlignment = Alignment.Center
+) {
+    Text(
+        &quot;渐变色+动画&quot;,
+        style = MaterialTheme.typography.labelSmall,
+        textAlign = TextAlign.Center
+    )
+}
+</div></section><section class="chapter"><h2 id="xmxc5h_8" data-toc="xmxc5h_8">正常+动画（进阶）</h2><p id="xmxc5h_33">使用 <code class="code" id="xmxc5h_35">drawBehind</code> API，动画部分同上。</p><div class="code-block" data-lang="kotlin">
+val density = LocalDensity.current
+val infiniteTransition = rememberInfiniteTransition()
+val animatedColor by infiniteTransition.animateColor(
+    initialValue = Color.Red,
+    targetValue = Color.Blue,
+    animationSpec = infiniteRepeatable(
+        animation = tween(2000),
+        repeatMode = RepeatMode.Reverse
+    )
+)
+Box(
+    modifier = Modifier
+        .size(60.dp)
+        .background(MaterialTheme.colorScheme.background)
+        .drawBehind {
+            drawRoundRect(
+                color = animatedColor,
+                size = size,
+                style = Stroke(width = with(density) { 2.dp.toPx() }),
+                cornerRadius = CornerRadius(0f, 0f)
+            )
+        },
+    contentAlignment = Alignment.Center
+) {
+    Text(
+        &quot;正常+动画（进阶）&quot;, style = MaterialTheme.typography.labelSmall,
+        textAlign = TextAlign.Center
+    )
+}
+</div></section><section class="chapter"><h2 id="xmxc5h_9" data-toc="xmxc5h_9">渐变色+动画（进阶）</h2><p id="xmxc5h_36">使用 <code class="code" id="xmxc5h_38">drawBehind</code> API，动画部分同上。</p><div class="code-block" data-lang="kotlin">
+val density = LocalDensity.current
+val infiniteTransition = rememberInfiniteTransition()
+val animatedOffset by infiniteTransition.animateFloat(
+    initialValue = 0f,
+    targetValue = 1000f,
+    animationSpec = infiniteRepeatable(
+        animation = tween(2000),
+        repeatMode = RepeatMode.Restart
+    )
+)
+Box(
+    modifier = Modifier
+        .size(60.dp)
+        .background(MaterialTheme.colorScheme.background)
+        .drawBehind {
+            drawRoundRect(
+                brush = Brush.linearGradient(
+                    listOf(Color.Red, Color.Blue, Color.Green),
+                    start = Offset(0f, 0f),
+                    end = Offset(animatedOffset, animatedOffset)
+                ),
+                size = size,
+                style = Stroke(width = with(density) { 2.dp.toPx() }),
+                cornerRadius = CornerRadius(0f, 0f)
+            )
+        },
+    contentAlignment = Alignment.Center
+) {
+    Text(
+        &quot;渐变色+动画（进阶）&quot;,
+        style = MaterialTheme.typography.labelSmall,
+        textAlign = TextAlign.Center
+    )
+}
+</div></section><section class="chapter"><h2 id="xmxc5h_10" data-toc="xmxc5h_10">虚线（进阶）</h2><p id="xmxc5h_39">使用 <code class="code" id="xmxc5h_41">drawBehind</code> API</p><div class="code-block" data-lang="kotlin">
+val density = LocalDensity.current
+Box(
+    modifier = Modifier
+        .size(60.dp)
+        .background(MaterialTheme.colorScheme.background)
+        .drawBehind {
+            val strokeWidth = with(density) { 2.dp.toPx() }
+            val dashWidth = with(density) { 10.dp.toPx() }
+            val gapWidth = with(density) { 6.dp.toPx() }
+            val radius = with(density) { 0.dp.toPx() }
+
+            val paint = Paint().asFrameworkPaint().apply {
+                isAntiAlias = true
+                color = android.graphics.Color.RED
+                style = android.graphics.Paint.Style.STROKE
+                this.strokeWidth = strokeWidth
+                pathEffect =
+                    android.graphics.DashPathEffect(floatArrayOf(dashWidth, gapWidth), 0f)
+            }
+
+            val frameworkCanvas = drawContext.canvas.nativeCanvas
+            val left = strokeWidth / 2
+            val top = strokeWidth / 2
+            val right = size.width - strokeWidth / 2
+            val bottom = size.height - strokeWidth / 2
+
+            frameworkCanvas.drawRoundRect(
+                left, top, right, bottom,
+                radius,radius,
+                paint
+            )
+        },
+    contentAlignment = Alignment.Center
+) {
+    Text(
+        &quot;虚线（进阶）&quot;,
+        style = MaterialTheme.typography.labelSmall,
+        textAlign = TextAlign.Center
+    )
+}
+</div></section><section class="chapter"><h2 id="xmxc5h_11" data-toc="xmxc5h_11">形状（进阶）</h2><p id="xmxc5h_42">使用 <code class="code" id="xmxc5h_44">drawBehind</code> API</p><div class="code-block" data-lang="kotlin">
+val density = LocalDensity.current
+Box(
+    modifier = Modifier
+        .size(60.dp)
+        .background(MaterialTheme.colorScheme.background)
+        .drawBehind {
+            val strokeWidth = with(density) { 2.dp.toPx() }
+            val centerX = size.width / 2
+            val centerY = size.height / 2
+            val outerRadius = size.minDimension / 2 - strokeWidth
+            val innerRadius = outerRadius / 2.5f
+            val path = Path()
+
+            val numPoints = 5
+            val angle = (2 * Math.PI / (numPoints * 2)).toFloat()
+            
+            // 自定义形状
+            for (i in 0 until numPoints * 2) {
+                val r = if (i % 2 == 0) outerRadius else innerRadius
+                val x = centerX + cos(i * angle) * r
+                val y = centerY + sin(i * angle) * r
+
+                if (i == 0) {
+                    path.moveTo(x, y)
+                } else {
+                    path.lineTo(x, y)
+                }
+            }
+            path.close()
+
+            drawPath(
+                path = path,
+                color = Color.Red,
+                style = Stroke(width = strokeWidth)
+            )
+        },
+    contentAlignment = Alignment.Center
+) {
+    Text(
+        &quot;形状（进阶）&quot;,
+        style = MaterialTheme.typography.labelSmall,
+        textAlign = TextAlign.Center
+    )
+}
+</div></section><div class="last-modified">Last modified: 01 June 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="project10-quizapp.html" class="navigation-links__prev">project09-QuizApp</a><a href="如何同时关联gitee和github.html" class="navigation-links__next">如何同时关联Gitee和Github</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b518/app.js"></script></body></html>

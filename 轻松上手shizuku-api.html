@@ -1,0 +1,36 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-07-28T13:50:36.89736152"><title>轻松上手Shizuku API | Laohei Blog</title><script type="application/json" id="virtual-toc-data">[{"id":"z6d3xfj_3","level":0,"title":"下载","anchor":"#z6d3xfj_3"},{"id":"shizuku","level":0,"title":"启动 Shizuku","anchor":"#shizuku"},{"id":"shizuku_1","level":0,"title":"项目引入 Shizuku 依赖","anchor":"#shizuku_1"},{"id":"provider","level":0,"title":"配置 Provider","anchor":"#provider"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b518/app.css" rel="stylesheet"><link rel="icon" type="image/png" sizes="16x16" href="images/my-logo.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="轻松上手Shizuku API | Laohei Blog"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Laohei Blog Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/轻松上手shizuku-api.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="轻松上手Shizuku API | Laohei Blog"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/轻松上手shizuku-api.html#webpage",
+    "url": "writerside-documentation/轻松上手shizuku-api.html",
+    "name": "轻松上手Shizuku API | Laohei Blog",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Laohei Blog Help"
+}</script><!-- End Schema.org --></head><body data-id="轻松上手Shizuku-API" data-main-title="轻松上手Shizuku API" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Android"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Laohei Blog  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="轻松上手Shizuku-API" id="轻松上手Shizuku-API.md">轻松上手Shizuku API</h1><section class="chapter"><h2 id="z6d3xfj_3" data-toc="z6d3xfj_3">下载</h2><ul class="list _bullet" id="z6d3xfj_7"><li class="list__item" id="z6d3xfj_8"><p id="z6d3xfj_10"><a href="https://url93.ctfile.com/f/48492093-1517941276-a7d73c?p=5372" id="z6d3xfj_11" data-external="true" rel="noopener noreferrer">网盘（访问密码：5372）</a></p></li><li class="list__item" id="z6d3xfj_9"><p id="z6d3xfj_12"><a href="https://github.com/RikkaApps/Shizuku/releases" id="z6d3xfj_13" data-external="true" rel="noopener noreferrer">Github</a></p></li></ul></section><section class="chapter"><h2 id="shizuku" data-toc="shizuku">启动 Shizuku</h2><p id="z6d3xfj_14">无线调试 和 root 设备的启动方式见官方文档。</p><ul class="list _bullet" id="z6d3xfj_15"><li class="list__item" id="z6d3xfj_20"><p>adb 命令</p></li></ul><aside class="prompt" data-type="tip" data-title="" id="z6d3xfj_16"><p id="z6d3xfj_21">PS: 如果无法使用 adb 命令，自行 Google 将 adb 工具添加至环境变量。 Linux系统 一般在当前用户目录下的 <code class="code" id="z6d3xfj_22">\Android\Sdk\platform-tools</code>。 Win系统 一般在当前用户目录下的 <code class="code" id="z6d3xfj_23">\AppData\Local\Android\Sdk\platform-tools</code></p></aside><figure id="z6d3xfj_17"><img alt="adb_start_shizuku.png" src="images/adb_start_shizuku.png" title="adb_start_shizuku.png" width="455" height="928"></figure><figure id="z6d3xfj_18"><img alt="start_success.png" src="images/start_success.png" title="start_success.png" width="1213" height="950"></figure><ul class="list _bullet" id="z6d3xfj_19"><li class="list__item" id="z6d3xfj_24"><p id="z6d3xfj_26"><a href="https://shizuku.rikka.app/zh-hans/guide/setup/" id="z6d3xfj_27" data-external="true" rel="noopener noreferrer">无线调试</a></p></li><li class="list__item" id="z6d3xfj_25"><p id="z6d3xfj_28"><a href="https://shizuku.rikka.app/zh-hans/guide/setup/" id="z6d3xfj_29" data-external="true" rel="noopener noreferrer">Root 设备</a></p></li></ul></section><section class="chapter"><h2 id="shizuku_1" data-toc="shizuku_1">项目引入 Shizuku 依赖</h2><div class="code-block" data-lang="kotlin">
+// 必须
+implementation(&quot;dev.rikka.shizuku:api:13.1.5&quot;)
+
+// 如果是 sui 模式（针对 root 设备）非必须
+implementation(&quot;dev.rikka.shizuku:provider:13.1.5&quot;)
+
+// 必须，否则部分 api 调用时异常
+implementation(&quot;org.lsposed.hiddenapibypass:hiddenapibypass:6.1&quot;)
+
+// 部分隐藏 api 接口
+compileOnly(project(&quot;:demo-hidden-api-stub&quot;))
+</div></section><section class="chapter"><h2 id="provider" data-toc="provider">配置 Provider</h2><p id="z6d3xfj_31">在 <code class="code" id="z6d3xfj_34">AndroidManifest.xml</code> 中的 <code class="code" id="z6d3xfj_35">application</code> 标签内增加以下 <code class="code" id="z6d3xfj_36">provider</code></p><div class="code-block" data-lang="markup">
+&lt;provider
+        android:name=&quot;rikka.shizuku.ShizukuProvider&quot;
+        android:authorities=&quot;${applicationId}.shizuku&quot;
+        android:multiprocess=&quot;false&quot;
+        android:enabled=&quot;true&quot;
+        android:exported=&quot;true&quot;
+        android:permission=&quot;android.permission.INTERACT_ACROSS_USERS_FULL&quot;/&gt;
+</div><p id="z6d3xfj_33"><a href="https://www.bilibili.com/video/BV11mNzzHEXr/" id="z6d3xfj_37" data-external="true" rel="noopener noreferrer">视频教程</a></p></section><div class="last-modified">Last modified: 27 July 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="project01-travelapp.html" class="navigation-links__next">project01-TravelApp</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b518/app.js"></script></body></html>
