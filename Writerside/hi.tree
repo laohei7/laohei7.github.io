@@ -19,6 +19,7 @@
         <toc-element topic="project07-CryptoApp.md"/>
         <toc-element topic="project08-FoodApp.md"/>
         <toc-element topic="project10-QuizApp.md"/>
+        <toc-element topic="project10-OnlineShopApp2.md"/>
     </toc-element>
     <toc-element toc-title="Jetpack Compose">
         <toc-element topic="绘制边框的几种方式.md"/>
