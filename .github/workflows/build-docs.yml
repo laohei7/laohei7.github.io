@@ -8,6 +8,7 @@ on:
 permissions:
   id-token: write
   pages: write
+  contents: write  # 用于推送到另一个仓库
 
 env:
   INSTANCE: 'Writerside/hi'
@@ -38,6 +39,7 @@ jobs:
             artifacts/${{ env.ARTIFACT }}
             artifacts/report.json
           retention-days: 7
+
   test:
     needs: build
     runs-on: ubuntu-latest
@@ -52,6 +54,7 @@ jobs:
         uses: JetBrains/writerside-checker-action@v1
         with:
           instance: ${{ env.INSTANCE }}
+
   deploy:
     environment:
       name: github-pages
@@ -78,3 +81,23 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Deploy to laohei7.github.io repo (gh-pages branch)
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAGES_DEPLOY_TOKEN }}
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          rm -rf gh-pages-temp
+          git clone --depth 1 --single-branch --branch gh-pages https://x-access-token:${GH_TOKEN}@github.com/laohei7/laohei7.github.io.git gh-pages-temp || (
+            git clone https://x-access-token:${GH_TOKEN}@github.com/laohei7/laohei7.github.io.git gh-pages-temp
+            cd gh-pages-temp
+            git checkout --orphan gh-pages
+            cd ..
+          )
+          rm -rf gh-pages-temp/*
+          cp -r dir/* gh-pages-temp/
+          cd gh-pages-temp
+          git add .
+          git commit -m "Update Writerside build [skip ci]" || echo "No changes to commit"
+          git push origin gh-pages
