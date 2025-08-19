@@ -61,6 +61,7 @@ implementation("com.github.laohei7:common_ui_kit:1.0.0")
 implementation("io.ktor:ktor-client-core:3.2.3")
 implementation("io.ktor:ktor-client-okhttp:3.2.3")
 implementation("io.ktor:ktor-client-content-negotiation:3.2.3")
+implementation("io.ktor:ktor-serialization-kotlinx-json:3.2.3")
 ```
 
 ## Api
