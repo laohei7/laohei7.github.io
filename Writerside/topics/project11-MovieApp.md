@@ -64,6 +64,12 @@ implementation("io.ktor:ktor-client-content-negotiation:3.2.3")
 implementation("io.ktor:ktor-serialization-kotlinx-json:3.2.3")
 ```
 
+- icon
+
+```kotlin
+implementation("androidx.compose.material:material-icons-extended:1.7.8")
+```
+
 ## Api
 
 - Movie List
