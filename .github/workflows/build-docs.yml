@@ -18,7 +18,7 @@ env:
   ALGOLIA_APP_NAME: 'RU7KP4UR3Y'
   ALGOLIA_INDEX_NAME: 'laohei_blog'
   ALGOLIA_KEY: '${{ secrets.ALGOLIA_KEY }}'
-  CONFIG_JSON_PRODUCT: 'Writerside'
+  CONFIG_JSON_PRODUCT: 'hi'
   CONFIG_JSON_VERSION: 'main'
 
 jobs:
