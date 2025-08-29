@@ -11,6 +11,12 @@
         <variables>
             <header-logo>my-logo.png</header-logo>
             <custom-favicons>my-logo.png</custom-favicons>
+            <algolia-id>RU7KP4UR3Y</algolia-id>
+            <algolia-index>laohei_blog</algolia-index>
+            <algolia-api-key>60fa0b2ad207f33924daa6403bbe3e90</algolia-api-key>
+            <analytics-head-script-file>
+                google-analytics.js
+            </analytics-head-script-file>
         </variables>
     </build-profile>
 

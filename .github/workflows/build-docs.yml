@@ -14,6 +14,12 @@ env:
   INSTANCE: 'Writerside/hi'
   ARTIFACT: 'webHelpHI2-all.zip'
   DOCKER_VERSION: '243.21565'
+  ALGOLIA_ARTIFACT: 'algolia-indexes-HI.zip'
+  ALGOLIA_APP_NAME: 'RU7KP4UR3Y'
+  ALGOLIA_INDEX_NAME: 'laohei_blog'
+  ALGOLIA_KEY: '${{ secrets.ALGOLIA_KEY }}'
+  CONFIG_JSON_PRODUCT: 'Writerside'
+  CONFIG_JSON_VERSION: 'main'
 
 jobs:
   build:
