@@ -1,0 +1,344 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-10-03T04:41:36.983036171"><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LR6H6HWQQY"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-LR6H6HWQQY');
+</script><title>project12-CommunityServiceApp | Laohei Blog</title><script type="application/json" id="virtual-toc-data">[{"id":"preview","level":0,"title":"Preview","anchor":"#preview"},{"id":"settings-project","level":0,"title":"Settings Project","anchor":"#settings-project"},{"id":"theme","level":0,"title":"Theme","anchor":"#theme"},{"id":"model","level":0,"title":"Model","anchor":"#model"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b518/app.css" rel="stylesheet"><link rel="icon" type="image/png" sizes="16x16" href="images/my-logo.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="project12-CommunityServiceApp | Laohei Blog"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Laohei Blog Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation//main/project12-communityserviceapp.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="project12-CommunityServiceApp | Laohei Blog"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation//main/project12-communityserviceapp.html#webpage",
+    "url": "writerside-documentation//main/project12-communityserviceapp.html",
+    "name": "project12-CommunityServiceApp | Laohei Blog",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Laohei Blog Help"
+}</script><!-- End Schema.org --></head><body data-id="project12-CommunityServiceApp" data-main-title="project12-CommunityServiceApp" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Compose UI"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Laohei Blog main Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="project12-CommunityServiceApp" id="project12-CommunityServiceApp.md">project12-CommunityServiceApp</h1><section class="chapter"><h2 id="preview" data-toc="preview">Preview</h2><figure id="tfinh9_7"><img alt="project02_cover.jpg" src="images/project12_cover.jpg" title="project02_cover.jpg" width="1280" height="720"></figure></section><section class="chapter"><h2 id="settings-project" data-toc="settings-project">Settings Project</h2><ul class="list _bullet" id="tfinh9_8"><li class="list__item" id="tfinh9_14"><p>resources</p></li></ul><p id="tfinh9_9"><a href="https://github.com/laohei7/compose_ui/tree/main/project12-community_service_app" id="tfinh9_15" data-external="true" rel="noopener noreferrer">Github</a></p><p id="tfinh9_10"><a href="https://url93.ctfile.com/f/48492093-8444997019-11897e?p=5372" id="tfinh9_16" data-external="true" rel="noopener noreferrer">压缩包（访问密码：5372）</a></p><ul class="list _bullet" id="tfinh9_11"><li class="list__item" id="tfinh9_17"><p>dependencies</p></li></ul><div class="code-block" data-lang="toml">
+[versions]
+koinCompose = &quot;4.1.0&quot;
+androidx-navigation = &quot;2.9.0-beta03&quot;
+coilCompose = &quot;3.3.0&quot;
+
+[libraries]
+coil-compose = { module = &quot;io.coil-kt.coil3:coil-compose&quot;, version.ref = &quot;coilCompose&quot; }
+koin-compose-viewmodel = { module = &quot;io.insert-koin:koin-compose-viewmodel&quot;, version.ref = &quot;koinCompose&quot; }
+koin-compose = { module = &quot;io.insert-koin:koin-compose&quot;, version.ref = &quot;koinCompose&quot; }
+koin-core = { module = &quot;io.insert-koin:koin-core&quot;, version.ref = &quot;koinCompose&quot; }
+koin-compose-viewmodel-navigation = { module = &quot;io.insert-koin:koin-compose-viewmodel-navigation&quot;, version.ref = &quot;koinCompose&quot; }
+androidx-navigation-compose = { module = &quot;org.jetbrains.androidx.navigation:navigation-compose&quot;, version.ref = &quot;androidx-navigation&quot; }
+
+[bundles]
+koin = [
+    &quot;koin-compose&quot;,
+    &quot;koin-compose-viewmodel&quot;,
+    &quot;koin-compose-viewmodel-navigation&quot;,
+    &quot;koin-core&quot;
+]
+</div><div class="code-block" data-lang="kotlin">
+  sourceSets {
+        androidMain.dependencies {
+          // ...
+        }
+        commonMain.dependencies {
+            // ...
+            implementation(compose.materialIconsExtended)
+            implementation(libs.coil.compose)
+        }
+        commonTest.dependencies {
+          // ...
+        }
+        jvmMain.dependencies {
+           // ...
+        }
+    }
+</div></section><section class="chapter"><h2 id="theme" data-toc="theme">Theme</h2><ul class="list _bullet" id="tfinh9_18"><li class="list__item" id="tfinh9_24"><p>Color</p></li></ul><div class="code-block" data-lang="kotlin">
+import androidx.compose.ui.graphics.Color
+
+// 主题主色 (Primary / CTA)
+val PurplePrimary = Color(0xFF7B4DFF)   // &quot;Book Now&quot; 按钮紫色
+val PurpleLight = Color(0xFFE7DDFF)     // 按钮浅紫色背景
+val PurpleDark = Color(0xFF5A32CC)      // 深紫色
+
+// 状态/提醒色
+val RedDiscount = Color(0xFFE53935)     // 折扣角标红
+val GreenSuccess = Color(0xFF43A047)    // 成功提示绿
+val YellowWarning = Color(0xFFFFC107)   // 警告黄
+val BlueInfo = Color(0xFF1E88E5)        // 信息蓝
+
+// 卡片背景 (柔和浅色)
+val GreenCard = Color(0xFFDFF5D8)       // Home Cleaning 背景绿
+val PinkCard = Color(0xFFFFE1F1)        // Bathroom Cleaning 粉色
+val YellowCard = Color(0xFFFFF0CC)      // Sofa Carpet Cleaning 浅黄
+val BlueCard = Color(0xFFDDEFFF)        // Kitchen Cleaning 浅蓝
+val PurpleCard = Color(0xFFEFE0FF)      // 其他备用紫卡片背景
+
+// 背景与中性色
+val BackgroundLight = Color(0xFFF9F7F1) // 整体米白背景
+val SurfaceWhite = Color(0xFFFFFFFF)    // 卡片 / 容器白
+val DividerGray = Color(0xFFDDDDDD)     // 分割线
+val IconGray = Color(0xFF757575)        // 图标灰
+val TextPrimary = Color(0xFF212121)     // 主文字
+val TextSecondary = Color(0xFF616161)   // 副文字
+</div><ul class="list _bullet" id="tfinh9_20"><li class="list__item" id="tfinh9_25"><p>Shape</p></li></ul><div class="code-block" data-lang="kotlin">
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Shapes
+import androidx.compose.ui.unit.dp
+
+val AppShapes = Shapes(
+    small = RoundedCornerShape(8.dp),
+    medium = RoundedCornerShape(16.dp),
+    large = RoundedCornerShape(24.dp)
+)
+
+class BurstShape(
+    private val spikes: Int = 12,
+    private val innerRatio: Float = 0.7f,   // 内圈半径比例
+    private val cornerRadius: Float = 22f   // 圆角半径（像素）
+) : Shape {
+    override fun createOutline(
+        size: Size,
+        layoutDirection: LayoutDirection,
+        density: Density
+    ): Outline {
+        val path = Path()
+        val radius = min(size.width, size.height) / 2f
+        val center = Offset(size.width / 2f, size.height / 2f)
+        val step = (2 * PI / spikes).toFloat()
+
+        // 所有点
+        val points = mutableListOf&lt;Offset&gt;()
+        var angle = 0f
+        for (i in 0 until spikes * 2) {
+            val r = if (i % 2 == 0) radius else radius * innerRatio
+            val x = center.x + r * cos(angle)
+            val y = center.y + r * sin(angle)
+            points.add(Offset(x, y))
+            angle += step / 2
+        }
+
+        // 圆角连接
+        for (i in points.indices) {
+            val prev = points[(i - 1 + points.size) % points.size]
+            val current = points[i]
+            val next = points[(i + 1) % points.size]
+
+            // 方向向量
+            val v1 = Offset(current.x - prev.x, current.y - prev.y)
+            val v2 = Offset(current.x - next.x, current.y - next.y)
+
+            // 单位化
+            val v1n = v1 / v1.getDistance()
+            val v2n = v2 / v2.getDistance()
+
+            // 在当前点两边退让 cornerRadius
+            val p1 = current - v1n * cornerRadius
+            val p2 = current - v2n * cornerRadius
+
+            if (i == 0) path.moveTo(p1.x, p1.y) else path.lineTo(p1.x, p1.y)
+            path.quadraticTo(current.x, current.y, p2.x, p2.y)
+        }
+
+        path.close()
+        return Outline.Generic(path)
+    }
+}
+</div><ul class="list _bullet" id="tfinh9_22"><li class="list__item" id="tfinh9_26"><p>Theme</p></li></ul><div class="code-block" data-lang="kotlin">
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
+
+
+private val LightColors = lightColorScheme(
+    primary = PurplePrimary,
+    onPrimary = Color.White,
+    primaryContainer = PurpleLight,
+    onPrimaryContainer = PurpleDark,
+
+    secondary = BlueInfo,
+    onSecondary = Color.White,
+    secondaryContainer = BlueCard,
+    onSecondaryContainer = BlueInfo,
+
+    background = BackgroundLight,
+    onBackground = TextPrimary,
+
+    surface = SurfaceWhite,
+    onSurface = TextPrimary,
+
+    error = RedDiscount,
+    onError = Color.White
+)
+
+private val DarkColors = darkColorScheme(
+    primary = PurpleLight,
+    onPrimary = PurpleDark,
+    secondary = BlueCard,
+    onSecondary = Color.Black,
+    background = Color(0xFF121212),
+    onBackground = Color.White,
+    surface = Color(0xFF1E1E1E),
+    onSurface = Color.White,
+    error = Color(0xFFEF9A9A),
+    onError = Color.Black
+)
+
+@Composable
+fun AppTheme(
+    darkTheme: Boolean = false,
+    content: @Composable () -&gt; Unit
+) {
+    val colors = if (darkTheme) DarkColors else LightColors
+
+    MaterialTheme(
+        colorScheme = colors,
+        shapes = AppShapes,
+        content = content
+    )
+}
+</div></section><section class="chapter"><h2 id="model" data-toc="model">Model</h2><ul class="list _bullet" id="tfinh9_27"><li class="list__item" id="tfinh9_35"><p>UserProfile</p></li></ul><div class="code-block" data-lang="kotlin">
+data class UserProfile(
+    val pic: String,
+    val name: String,
+    val job: String? = null,
+    val phone: String
+)
+
+val UserJamali = UserProfile(
+    pic = &quot;drawable/profile.jpg&quot;,
+    name = &quot;Mohsen Jamali&quot;,
+    phone = &quot;00123456789&quot;
+)
+
+val UserAnderson = UserProfile(
+    pic = &quot;drawable/cleaner_profile.jpg&quot;,
+    name = &quot;Tina Anderson&quot;,
+    job = &quot;Cleaner&quot;,
+    phone = &quot;00123456789&quot;
+)
+</div><ul class="list _bullet" id="tfinh9_29"><li class="list__item" id="tfinh9_36"><p>Banner</p></li></ul><div class="code-block" data-lang="kotlin">
+data class Banner(
+    val pic: String,
+    val title: String,
+    val subtitle: String
+)
+
+val BannerList = listOf(
+    Banner(
+        pic = &quot;drawable/banner.png&quot;,
+        title = &quot;Quick Home\nRepair Service&quot;,
+        subtitle = &quot;24/7 Support&quot;
+    )
+)
+</div><ul class="list _bullet" id="tfinh9_31"><li class="list__item" id="tfinh9_37"><p>Category</p></li></ul><div class="code-block" data-lang="kotlin">
+data class Category(
+    val id: Int,
+    val title: String
+)
+
+val CategoryList = listOf(
+    Category(0, &quot;All&quot;),
+    Category(1, &quot;Cleaning&quot;),
+    Category(2, &quot;Plumber&quot;),
+    Category(3, &quot;Mechanic&quot;),
+    Category(4, &quot;Electric&quot;),
+)
+</div><ul class="list _bullet" id="tfinh9_33"><li class="list__item" id="tfinh9_38"><p>Service</p></li></ul><div class="code-block" data-lang="kotlin">
+data class Service(
+    val profile: UserProfile,
+    val title: String,
+    val subtitle: String,
+    val description: String,
+    val pic: String,
+    val price: Double,
+    val oldPrice: Double,
+    val off: Double,
+    val classicPrice: Double,
+    val classicOldPrice: Double,
+    val premiumPrice: Double,
+    val premiumOldPrice: Double,
+    val platinumPrice: Double,
+    val platinumOldPrice: Double,
+    val category: Category,
+)
+
+val ServiceList = listOf(
+    Service(
+        profile = UserAnderson,
+        category = CategoryList[1],
+        title = &quot;Home Deep Cleaning&quot;,
+        subtitle = &quot;Get 20% off Our Best Services Today&quot;,
+        description = &quot;Our expert service man provides a thorough and detailed cleaning of your entire home. From dusting and vacuuming to scrubbing and sanitizing, every corner is taken care of with precision. This service is ideal if you want to refresh your living space, remove hidden dirt, and create a healthier environment for you and your family. We use safe and effective cleaning methods to make sure your furniture, floors, and surfaces are spotless.&quot;,
+        pic = &quot;drawable/cleaner1.png&quot;,
+        price = 1499.0,
+        oldPrice = 1499.0,
+        off = 20.0,
+        classicPrice = 1499.0,
+        classicOldPrice = 1999.0,
+        premiumPrice = 1999.0,
+        premiumOldPrice = 2100.0,
+        platinumPrice = 24990.0,
+        platinumOldPrice = 2599.0
+    ),
+    Service(
+        profile = UserAnderson,
+        category = CategoryList[1],
+        title = &quot;Bathroom Cleaning&quot;,
+        subtitle = &quot;Sparking bathrooms.\nenjoy 20$ today&quot;,
+        description = &quot;Our bathroom cleaning service ensures spotless tiles, sanitized sinks, and shining mirrors. We focus on removing tough stains, soap scum, and bacteria to leave your bathroom fresh and hygienic. Perfect if you want a hotel-like shine in your own home.&quot;,
+        pic = &quot;drawable/cleaner2.png&quot;,
+        price = 1299.0,
+        oldPrice = 1699.0,
+        off = 24.0,
+        classicPrice = 1299.0,
+        classicOldPrice = 1699.0,
+        premiumPrice = 1799.0,
+        premiumOldPrice = 2100.0,
+        platinumPrice = 2299.0,
+        platinumOldPrice = 2599.0
+    ),
+    Service(
+        profile = UserAnderson,
+        category = CategoryList[1],
+        title = &quot;Sofa Carpet Clean&quot;,
+        subtitle = &quot;Fresh sofas, carpets get 15% off&quot;,
+        description = &quot;We specialize in deep cleaning sofas, carpets, and upholstery to remove dust, stains, and allergens. Using eco-friendly solutions, we restore the original freshness of your furniture and create a healthier home atmosphere.&quot;,
+        pic = &quot;drawable/cleaner3.png&quot;,
+        price = 1199.0,
+        oldPrice = 1499.0,
+        off = 15.0,
+        classicPrice = 1199.0,
+        classicOldPrice = 1499.0,
+        premiumPrice = 1599.0,
+        premiumOldPrice = 1899.0,
+        platinumPrice = 20990.0,
+        platinumOldPrice = 2399.0
+    ),
+    Service(
+        profile = UserAnderson,
+        category = CategoryList[1],
+        title = &quot;Kitchen Cleaning&quot;,
+        subtitle = &quot;Get 20% off Our Best Services Today&quot;,
+        description = &quot;Our kitchen cleaning service removes grease, grime, and food stains from counters, cabinets, and appliances. From stovetops to sinks, we leave your kitchen sparkling clean and safe for cooking.&quot;,
+        pic = &quot;drawable/cleaner4.png&quot;,
+        price = 1399.0,
+        oldPrice = 1799.0,
+        off = 22.0,
+        classicPrice = 1399.0,
+        classicOldPrice = 1799.0,
+        premiumPrice = 1999.0,
+        premiumOldPrice = 2099.0,
+        platinumPrice = 2299.0,
+        platinumOldPrice = 2599.0
+    )
+)
+</div></section><div class="last-modified">Last modified: 03 October 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="project11-movieapp.html" class="navigation-links__prev">project11-MovieApp</a><a href="绘制边框的几种方式.html" class="navigation-links__next">绘制边框的几种方式</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b518/app.js"></script></body></html>
