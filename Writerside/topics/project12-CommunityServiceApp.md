@@ -19,6 +19,7 @@
 koinCompose = "4.1.0"
 androidx-navigation = "2.9.0-beta03"
 coilCompose = "3.3.0"
+kotlinx-serialization = "1.9.0"
 
 [libraries]
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilCompose" }
@@ -27,6 +28,10 @@ koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koinComp
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koinCompose" }
 koin-compose-viewmodel-navigation = { module = "io.insert-koin:koin-compose-viewmodel-navigation", version.ref = "koinCompose" }
 androidx-navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "androidx-navigation" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+
+[plugins]
+kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 
 [bundles]
 koin = [
@@ -38,22 +43,37 @@ koin = [
 ```
 
 ```kotlin
-  sourceSets {
-        androidMain.dependencies {
-          // ...
-        }
-        commonMain.dependencies {
-            // ...
-            implementation(compose.materialIconsExtended)
-            implementation(libs.coil.compose)
-        }
-        commonTest.dependencies {
-          // ...
-        }
-        jvmMain.dependencies {
-           // ...
-        }
+// project/build.gradle.kts
+plugins {
+    // ...
+    alias(libs.plugins.kotlinx.serialization) apply false
+}
+
+// composeApp/build.gradle.kts
+plugins {
+    // ...
+    alias(libs.plugins.kotlinx.serialization)
+}
+
+sourceSets {
+    androidMain.dependencies {
+        // ...
     }
+    commonMain.dependencies {
+        // ...
+        implementation(compose.materialIconsExtended)
+        implementation(libs.coil.compose)
+        implementation(libs.androidx.navigation.compose)
+        implementation(libs.bundles.koin)
+        implementation(libs.kotlinx.serialization.json)
+    }
+    commonTest.dependencies {
+        // ...
+    }
+    jvmMain.dependencies {
+        // ...
+    }
+}
 ```
 
 ## Theme
