@@ -1,0 +1,242 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-10-17T04:58:19.307465398"><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LR6H6HWQQY"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-LR6H6HWQQY');
+</script><title>project13-BankingApp | Laohei Blog</title><script type="application/json" id="virtual-toc-data">[{"id":"preview","level":0,"title":"Preview","anchor":"#preview"},{"id":"settings-project","level":0,"title":"Settings Project","anchor":"#settings-project"},{"id":"theme","level":0,"title":"Theme","anchor":"#theme"},{"id":"model","level":0,"title":"Model","anchor":"#model"},{"id":"data","level":0,"title":"Data","anchor":"#data"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b518/app.css" rel="stylesheet"><link rel="icon" type="image/png" sizes="16x16" href="images/my-logo.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="project13-BankingApp | Laohei Blog"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Laohei Blog Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation//main/project13-bankingapp.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="project13-BankingApp | Laohei Blog"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation//main/project13-bankingapp.html#webpage",
+    "url": "writerside-documentation//main/project13-bankingapp.html",
+    "name": "project13-BankingApp | Laohei Blog",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Laohei Blog Help"
+}</script><!-- End Schema.org --></head><body data-id="project13-BankingApp" data-main-title="project13-BankingApp" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Compose UI"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Laohei Blog main Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="project13-BankingApp" id="project13-BankingApp.md">project13-BankingApp</h1><section class="chapter"><h2 id="preview" data-toc="preview">Preview</h2><figure id="-65kidh_8"><img alt="project02_cover.jpg" src="images/project13_cover.jpg" title="project02_cover.jpg" width="1280" height="720"></figure></section><section class="chapter"><h2 id="settings-project" data-toc="settings-project">Settings Project</h2><ul class="list _bullet" id="-65kidh_9"><li class="list__item" id="-65kidh_15"><p>resources</p></li></ul><p id="-65kidh_10"><a href="https://github.com/laohei7/compose_ui/tree/main/project13-banking_app" id="-65kidh_16" data-external="true" rel="noopener noreferrer">Github</a></p><p id="-65kidh_11"><a href="https://url93.ctfile.com/f/48492093-8453442257-fed475?p=5372" id="-65kidh_17" data-external="true" rel="noopener noreferrer">压缩包（访问密码：5372）</a></p><ul class="list _bullet" id="-65kidh_12"><li class="list__item" id="-65kidh_18"><p>dependencies</p></li></ul><div class="code-block" data-lang="toml">
+[versions]
+koinCompose = &quot;4.1.0&quot;
+androidx-navigation = &quot;2.9.0-beta03&quot;
+constraintlayoutComposeMultiplatform = &quot;0.6.1&quot;
+coilCompose = &quot;3.3.0&quot;
+kotlinx-serialization = &quot;1.9.0&quot;
+
+[libraries]
+constraintlayout-compose-multiplatform = { module = &quot;tech.annexflow.compose:constraintlayout-compose-multiplatform&quot;, version.ref = &quot;constraintlayoutComposeMultiplatform&quot; }
+coil-compose = { module = &quot;io.coil-kt.coil3:coil-compose&quot;, version.ref = &quot;coilCompose&quot; }
+koin-compose-viewmodel = { module = &quot;io.insert-koin:koin-compose-viewmodel&quot;, version.ref = &quot;koinCompose&quot; }
+koin-compose = { module = &quot;io.insert-koin:koin-compose&quot;, version.ref = &quot;koinCompose&quot; }
+koin-core = { module = &quot;io.insert-koin:koin-core&quot;, version.ref = &quot;koinCompose&quot; }
+koin-compose-viewmodel-navigation = { module = &quot;io.insert-koin:koin-compose-viewmodel-navigation&quot;, version.ref = &quot;koinCompose&quot; }
+androidx-navigation-compose = { module = &quot;org.jetbrains.androidx.navigation:navigation-compose&quot;, version.ref = &quot;androidx-navigation&quot; }
+kotlinx-serialization-json = { module = &quot;org.jetbrains.kotlinx:kotlinx-serialization-json&quot;, version.ref = &quot;kotlinx-serialization&quot; }
+
+[plugins]
+kotlinx-serialization = { id = &quot;org.jetbrains.kotlin.plugin.serialization&quot;, version.ref = &quot;kotlin&quot; }
+
+[bundles]
+koin = [
+    &quot;koin-compose&quot;,
+    &quot;koin-compose-viewmodel&quot;,
+    &quot;koin-compose-viewmodel-navigation&quot;,
+    &quot;koin-core&quot;
+]
+</div><div class="code-block" data-lang="kotlin">
+// project/build.gradle.kts
+plugins {
+    // ...
+    alias(libs.plugins.kotlinx.serialization) apply false
+}
+
+// composeApp/build.gradle.kts
+plugins {
+    // ...
+    alias(libs.plugins.kotlinx.serialization)
+}
+
+sourceSets {
+    androidMain.dependencies {
+        // ...
+    }
+    commonMain.dependencies {
+        // ...
+        implementation(compose.materialIconsExtended)
+        implementation(libs.coil.compose)
+        implementation(libs.androidx.navigation.compose)
+        implementation(libs.bundles.koin)
+        implementation(libs.kotlinx.serialization.json)
+        implementation(libs.constraintlayout.compose.multiplatform)
+    }
+    commonTest.dependencies {
+        // ...
+    }
+    jvmMain.dependencies {
+        // ...
+    }
+}
+</div></section><section class="chapter"><h2 id="theme" data-toc="theme">Theme</h2><ul class="list _bullet" id="-65kidh_19"><li class="list__item" id="-65kidh_25"><p>Color</p></li></ul><div class="code-block" data-lang="kotlin">
+import androidx.compose.ui.graphics.Color
+
+val PurplePrimary = Color(0xFF7B61FF)
+val PurpleSecondary = Color(0xFFB388FF)
+val OrangeAccent = Color(0xFFFF8A65)
+
+val BackgroundLight = Color(0xFFF4F2FF)
+val SurfaceLight = Color(0xFFFFFFFF)
+val TextDark = Color(0xFF1E1E1E)
+
+val ErrorLight = Color(0xFFFF6B6B)
+val ErrorDark = Color(0xFFFF8A80)
+
+val PrimaryDark = Color(0xFFB388FF)
+val SecondaryDark = Color(0xFF7B61FF)
+val BackgroundDark = Color(0xFF121212)
+val SurfaceDark = Color(0xFF1E1E1E)
+val TextLight = Color(0xFFF4F2FF)
+</div><ul class="list _bullet" id="-65kidh_21"><li class="list__item" id="-65kidh_26"><p>Shape</p></li></ul><div class="code-block" data-lang="kotlin">
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Shapes
+import androidx.compose.ui.unit.dp
+
+val BankAppShapes = Shapes(
+    small = RoundedCornerShape(8.dp),
+    medium = RoundedCornerShape(16.dp),
+    large = RoundedCornerShape(28.dp)
+)
+</div><ul class="list _bullet" id="-65kidh_23"><li class="list__item" id="-65kidh_27"><p>Theme</p></li></ul><div class="code-block" data-lang="kotlin">
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Shapes
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+
+private val LightColorScheme = lightColorScheme(
+    primary = PurplePrimary,
+    onPrimary = Color.White,
+    secondary = PurpleSecondary,
+    onSecondary = Color.White,
+    tertiary = OrangeAccent,
+    background = BackgroundLight,
+    surface = SurfaceLight,
+    onBackground = TextDark,
+    onSurface = TextDark,
+    error = ErrorLight
+)
+
+private val DarkColorScheme = darkColorScheme(
+    primary = PrimaryDark,
+    onPrimary = Color.Black,
+    secondary = SecondaryDark,
+    onSecondary = Color.Black,
+    tertiary = OrangeAccent,
+    background = BackgroundDark,
+    surface = SurfaceDark,
+    onBackground = TextLight,
+    onSurface = TextLight,
+    error = ErrorDark
+)
+
+@Composable
+fun BankAppTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -&gt; Unit
+) {
+    val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
+
+    MaterialTheme(
+        colorScheme = colorScheme,
+        shapes = Shapes(
+            small = RoundedCornerShape(8.dp),
+            medium = RoundedCornerShape(16.dp),
+            large = RoundedCornerShape(28.dp)
+        ),
+        content = content
+    )
+}
+</div></section><section class="chapter"><h2 id="model" data-toc="model">Model</h2><ul class="list _bullet" id="-65kidh_28"><li class="list__item" id="-65kidh_34"><p>Profile</p></li></ul><div class="code-block" data-lang="kotlin">
+data class Profile(
+    val profileName: String,
+    val profileImage: String,
+    val totalBalance: String,
+    val income: String,
+    val banner: String,
+    val outcome: String,
+    val friend: List&lt;Friend&gt;,
+    val transaction: List&lt;Transaction&gt;
+)
+</div><ul class="list _bullet" id="-65kidh_30"><li class="list__item" id="-65kidh_35"><p>Friend</p></li></ul><div class="code-block" data-lang="kotlin">
+data class Friend(
+    val imageUrl: String,
+    val name: String
+)
+</div><ul class="list _bullet" id="-65kidh_32"><li class="list__item" id="-65kidh_36"><p>Transaction</p></li></ul><div class="code-block" data-lang="kotlin">
+data class Transaction(
+    val imageUrl: String,
+    val name: String,
+    val date: String,
+    val amount: String
+)
+</div></section><section class="chapter"><h2 id="data" data-toc="data">Data</h2><div class="code-block" data-lang="kotlin">
+val JacksonProfile = Profile(
+    profileName = &quot;Pitter Jackson&quot;,
+    profileImage = &quot;drawable/profile.png&quot;,
+    totalbalance = &quot;$ 451,654.54&quot;,
+    income = &quot;$ 1,549.46&quot;,
+    banner = &quot;drawable/banner.png&quot;,
+    outcome = &quot;$ 1,134.54&quot;,
+    friend = listOf(
+        Friend(
+            imageUrl = &quot;drawable/friend_4.png&quot;,
+            name = &quot;Sara&quot;
+        ),
+        Friend(
+            imageUrl = &quot;drawable/friend_2.png&quot;,
+            name = &quot;Kevin&quot;
+        ),
+        Friend(
+            imageUrl = &quot;drawable/friend_3.png&quot;,
+            name = &quot;Emmy&quot;
+        ),
+        Friend(
+            imageUrl = &quot;drawable/friend_1.png&quot;,
+            name = &quot;Jack&quot;
+        ),
+        Friend(
+            imageUrl = &quot;drawable/friend_5.png&quot;,
+            name = &quot;Maddie&quot;
+        )
+    ),
+    transaction = listOf(
+        Transaction(
+            imageUrl = &quot;drawable/transaction_1.png&quot;,
+            name = &quot;Resturant&quot;,
+            date = &quot;17 jun 2024 19:15&quot;,
+            amount = &quot;-573.12&quot;
+        ),
+        Transaction(
+            imageUrl = &quot;drawable/transaction_2.png&quot;,
+            name = &quot;David William&quot;,
+            date = &quot;18 jun 2024 10:15&quot;,
+            amount = &quot;+253.21&quot;
+        ),
+        Transaction(
+            imageUrl = &quot;drawable/transaction_3.png&quot;,
+            name = &quot;McDonald&quot;,
+            date = &quot;18 jun 2024 22:15&quot;,
+            amount = &quot;-120.12&quot;
+        )
+    )
+)
+</div></section><div class="last-modified">Last modified: 17 October 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="project12-communityserviceapp.html" class="navigation-links__prev">project12-CommunityServiceApp</a><a href="绘制边框的几种方式.html" class="navigation-links__next">绘制边框的几种方式</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b518/app.js"></script></body></html>
