@@ -19,11 +19,13 @@
 [versions]
 koinCompose = "4.1.0"
 androidx-navigation = "2.9.0-beta03"
+chart = "1.1.0"
 constraintlayoutComposeMultiplatform = "0.6.1"
 coilCompose = "3.3.0"
 kotlinx-serialization = "1.9.0"
 
 [libraries]
+chart = { module = "io.github.thechance101:chart", version.ref = "chart" }
 constraintlayout-compose-multiplatform = { module = "tech.annexflow.compose:constraintlayout-compose-multiplatform", version.ref = "constraintlayoutComposeMultiplatform" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilCompose" }
 koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "koinCompose" }
@@ -70,6 +72,7 @@ sourceSets {
         implementation(libs.bundles.koin)
         implementation(libs.kotlinx.serialization.json)
         implementation(libs.constraintlayout.compose.multiplatform)
+        implementation(libs.chart)
     }
     commonTest.dependencies {
         // ...
