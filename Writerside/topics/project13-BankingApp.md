@@ -23,6 +23,7 @@ chart = "1.1.0"
 constraintlayoutComposeMultiplatform = "0.6.1"
 coilCompose = "3.3.0"
 kotlinx-serialization = "1.9.0"
+kotlinxDatetime = "0.7.1"
 
 [libraries]
 chart = { module = "io.github.thechance101:chart", version.ref = "chart" }
@@ -34,6 +35,7 @@ koin-core = { module = "io.insert-koin:koin-core", version.ref = "koinCompose" }
 koin-compose-viewmodel-navigation = { module = "io.insert-koin:koin-compose-viewmodel-navigation", version.ref = "koinCompose" }
 androidx-navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "androidx-navigation" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
 
 [plugins]
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
@@ -73,6 +75,7 @@ sourceSets {
         implementation(libs.kotlinx.serialization.json)
         implementation(libs.constraintlayout.compose.multiplatform)
         implementation(libs.chart)
+        implementation(libs.kotlinx.datetime)
     }
     commonTest.dependencies {
         // ...
