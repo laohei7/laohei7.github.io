@@ -18,10 +18,12 @@
 [versions]
 koinCompose = "4.1.0"
 androidx-navigation = "2.9.0-beta03"
+chart = "1.1.0"
 coilCompose = "3.3.0"
 kotlinx-serialization = "1.9.0"
 
 [libraries]
+chart = { module = "io.github.thechance101:chart", version.ref = "chart" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilCompose" }
 koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "koinCompose" }
 koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koinCompose" }
@@ -66,6 +68,7 @@ sourceSets {
         implementation(libs.androidx.navigation.compose)
         implementation(libs.bundles.koin)
         implementation(libs.kotlinx.serialization.json)
+        implementation(libs.chart)
     }
     commonTest.dependencies {
         // ...
